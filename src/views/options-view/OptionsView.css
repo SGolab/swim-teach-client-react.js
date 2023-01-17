@@ -1,0 +1,23 @@
+.options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.options-item {
+    width: 90%;
+
+    background-color: rgba(245, 245, 245);
+    box-shadow: var(--light-shadow);
+
+    text-align: center;
+
+    padding: 10px;
+    transition: background-color 400ms, box-shadow 400ms;
+}
+
+.options-item:hover {
+    background-color: rgba(230, 230, 230);
+}
