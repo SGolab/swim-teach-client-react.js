@@ -1,5 +1,10 @@
 function LessonHistoryTableHeaderItem({text}) {
-    return <h1 className='lesson-history-table-header-item'>{text}</h1>
+
+    return (
+        <div className='lesson-history-table-header-item'>
+            <h1>{text}</h1>
+        </div>
+    )
 }
 
 export default LessonHistoryTableHeaderItem;
