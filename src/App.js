@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./header/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ViewContainer from "./views/ViewContainer";
-import SkillTreeView from "./views/SkillTreeView";
+import SkillTreeView from "./views/skill-tree-view/SkillTreeView";
 import NotFoundView from "./views/NotFoundView";
 import LessonHistoryView from "./views/lesson-history-view/LessonHistoryView";
 import OptionsView from "./views/options-view/OptionsView";

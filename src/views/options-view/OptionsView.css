@@ -15,9 +15,8 @@
     text-align: center;
 
     padding: 10px;
-    transition: background-color 400ms, box-shadow 400ms;
 }
 
 .options-item:hover {
-    background-color: rgba(230, 230, 230);
+    background-color: var(--tile-background-hover);
 }

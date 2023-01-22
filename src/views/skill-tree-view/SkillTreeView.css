@@ -1,0 +1,161 @@
+.content-container {
+    width: 80%;
+    height: 80%;
+
+    gap: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.stages-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.stage-tile {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    cursor: pointer;
+}
+
+.stage-tile:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.subjects-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.subject-tile {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    cursor: pointer;
+}
+
+.subject-tile:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.skill-tile {
+    flex-grow: 1;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    cursor: pointer;
+}
+
+.skill-tile:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.path-header {
+    display: flex;
+
+    height: 35px;
+}
+
+.path-item-empty {
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 100%;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    transform: skew(20deg);
+
+    cursor:pointer;
+}
+
+.path-item-empty:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.path-item-empty * {
+    transform: skew(-20deg);
+}
+
+.path-item {
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 100%;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    transform: skew(20deg);
+
+    cursor:pointer;
+
+}
+
+.path-item:hover {
+    background-color: var(--tile-background-hover);
+}
+
+
+.path-item * {
+    transform: skew(-20deg);
+}

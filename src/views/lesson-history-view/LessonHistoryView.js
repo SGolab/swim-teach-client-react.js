@@ -8,10 +8,6 @@ function LessonHistoryView() {
     const [data, setData] = useState();
 
     useEffect(() => {
-        console.log('lesson history view rendered')
-    })
-
-    useEffect(() => {
         const dataFetch = async () => {
             const json = await (
                 await fetchLessonHistory()

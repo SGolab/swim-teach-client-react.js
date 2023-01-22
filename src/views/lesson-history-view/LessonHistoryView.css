@@ -40,7 +40,7 @@
 }
 
 .lesson-history-table-row:hover {
-    background-color: rgba(230, 230, 230);
+    background-color: var(--tile-background-hover);
 }
 
 .skillmark-list {
@@ -58,23 +58,25 @@
     height: 50px;
 
     border-radius: 10px;
+
+    color: black;
+    text-decoration: none;
 }
 
-.skillmark-list > .skillmark-container:hover {
+.skillmark-container:hover {
     background-color: rgba(215, 215, 215);
 }
 
-.skillmark-list > .skillmark-container img {
-    height: 50px;
+.skillmark-container img {
+    height: 40px;
 }
 
-.skillmark-list > .skillmark-container span {
+.skillmark-container span {
     display: flex;
     align-items: center;
 
-
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 450;
 }
 
 .lesson-history-table-row-item {
@@ -88,6 +90,13 @@
     height: 100%;
 }
 
+.image-container {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
 .lesson-history-table-row-item img {
-    height: 50px;
+    height: 40px;
 }

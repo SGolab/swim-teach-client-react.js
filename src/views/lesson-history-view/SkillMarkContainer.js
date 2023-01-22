@@ -1,14 +1,15 @@
-import {useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {getImageForStatus} from "../../DataFetching";
 
 function SkillMarkContainer({skillMark}) {
 
-    const navigate = useNavigate()
-
     return (
-        <div className='skillmark-container' onClick={() => navigate('/skillTree')}>
-            <img src="/logo192.png" alt="img"/>
+        <NavLink to={`/skillTree/${skillMark.skillDetailsId}`} className='skillmark-container'>
+            <div className='image-container'>
+                <img src={getImageForStatus(skillMark.skillStatus)} alt="img"/>
+            </div>
             <span>{skillMark.skillDetailsTitle}</span>
-        </div>
+        </NavLink>
     )
 }
 
