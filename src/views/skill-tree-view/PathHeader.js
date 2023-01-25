@@ -19,10 +19,10 @@ function PathHeader({stage, setStage, subject, setSubject, skill, setSkill}) {
 
     return (
         <div className='path-header'>
-            <div className='path-item-empty' onClick={handleClickEmpty}><span> > </span></div>
-            {stage && <PathItem value={stage} setValue={handleClickStage}/>}
-            {subject && <PathItem value={subject} setValue={handleClickSubject}/>}
-            {skill && <PathItem value={skill}/>}
+            <div className='path-item empty' onClick={handleClickEmpty}><span> > </span></div>
+            {stage && <PathItem value={stage} setValue={handleClickStage} isGrayedOut={!subject}/>}
+            {subject && <PathItem value={subject} setValue={handleClickSubject} isGrayedOut={!skill}/>}
+            {skill && <PathItem value={skill} isGrayedOut={true}/>}
         </div>
     )
 }

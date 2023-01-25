@@ -1,5 +1,6 @@
 .content-container {
     width: 80%;
+    max-width: 800px;
     height: 80%;
 
     gap: 5px;
@@ -8,62 +9,6 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-}
-
-.stages-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-    gap: 10px;
-
-    height: 100%;
-    width: 100%;
-}
-
-.stage-tile {
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--tile-background);
-    box-shadow: var(--light-shadow);
-
-    cursor: pointer;
-}
-
-.stage-tile:hover {
-    background-color: var(--tile-background-hover);
-}
-
-.subjects-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-    gap: 10px;
-
-    height: 100%;
-    width: 100%;
-}
-
-.subject-tile {
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--tile-background);
-    box-shadow: var(--light-shadow);
-
-    cursor: pointer;
-}
-
-.subject-tile:hover {
-    background-color: var(--tile-background-hover);
 }
 
 .skills-container {
@@ -82,52 +27,168 @@
 
     width: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 8fr 0fr 2fr;
 
     background-color: var(--tile-background);
     box-shadow: var(--light-shadow);
 
     cursor: pointer;
+
+    transition: .3s;
 }
 
 .skill-tile:hover {
+    grid-template-columns: 3fr 5fr 2fr;
     background-color: var(--tile-background-hover);
 }
 
-.path-header {
-    display: flex;
-
-    height: 35px;
-}
-
-.path-item-empty {
-    display: flex;
-    align-items: center;
-
-    padding-left: 10px;
-    padding-right: 10px;
+.skill-overview {
+    grid-column: 1/1;
 
     height: 100%;
 
-    background-color: var(--tile-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.skill-tile:hover > .skill-overview {
     box-shadow: var(--light-shadow);
+    clip-path: inset(0px -15px 0px 0px);
+
+    text-align: center;
+}
+
+.skill-overview > img {
+    height: 40px;
+}
+
+.skill-overview > span {
+    text-align: center;
+}
+
+.skill-details {
+    grid-column: 2/2;
+
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     font-size: 1.5rem;
     font-weight: bold;
 
-    transform: skew(20deg);
+    transition: width .3s;
 
-    cursor:pointer;
+    overflow: hidden;
 }
 
-.path-item-empty:hover {
-    background-color: var(--tile-background-hover);
+.skill-details > span {
+    width: 350px;
+    min-width: 350px;
+    height: 100px;
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    overflow: auto;
 }
 
-.path-item-empty * {
-    transform: skew(-20deg);
+.progress-graph {
+    grid-column: 3/3;
+
+    display: grid;
+
+    box-shadow: var(--light-shadow);
+}
+
+.shape-container {
+    grid-row: 1/1;
+    grid-column: 1/1;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shape-container > span {
+    z-index: 1;
+    color: black;
+    align-items: center;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.progress-ring {
+    width: 75%;
+    aspect-ratio: 1/1;
+
+    clip-path: circle(50% at 50% 50%);
+
+    background: conic-gradient(
+            darkred 0%,
+            transparent 0%
+    );
+}
+
+.progress-ring-inner-circle {
+    width: 50%;
+    aspect-ratio: 1/1;
+    clip-path: circle(50% at 50% 50%);
+    background-color: white;
+}
+
+.skill-presentation {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+}
+
+.skill-presentation > h1 {
+    font-size: 3rem;
+}
+
+.skill-presentation > p {
+    font-size: 1.5rem;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.skill-presentation > iframe {
+    aspect-ratio: 16/9;
+    flex-grow: 1;
+    width: 80%;
+
+    margin-top: 20px;
+    margin-bottom: 30px
+}
+
+.path-header {
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+.path-header > h1 {
+    color: gray;
 }
 
 .path-item {
@@ -144,18 +205,32 @@
 
     font-size: 1.5rem;
     font-weight: bold;
+    white-space: nowrap;
 
-    transform: skew(20deg);
+    transform: skew(20deg) translateX(-5px);
 
-    cursor:pointer;
-
+    cursor: pointer;
 }
 
 .path-item:hover {
     background-color: var(--tile-background-hover);
 }
 
-
-.path-item * {
+.path-item:not(.empty) > * {
     transform: skew(-20deg);
+}
+
+.path-item.empty {
+    width: 15px;
+    transform: none;
+    clip-path: polygon(0 0, 65% 0, 100% 100%, 0% 100%);
+}
+
+.path-item.grayed-out {
+    background-color: var(--tile-background-hover);
+    cursor: default;
+}
+
+.path-item.grayed-out > img {
+    height: 65%;
 }

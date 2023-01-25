@@ -1,8 +1,4 @@
-import {separateTableElementsWithLines} from "../../Utils";
-
 function OptionsContainer({children}) {
-
-    // children = separateTableElementsWithLines(children)
 
     return (
         <div className='options-container'>

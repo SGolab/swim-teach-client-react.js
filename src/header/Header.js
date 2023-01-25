@@ -1,11 +1,11 @@
 import './Header.css'
-import Title from "./Title";
 import NavMenu from "./NavMenu";
+import {NavLink} from "react-router-dom";
 
 function Header() {
     return (
     <div className='header'>
-        <Title text='SWIM TEACH APP'/>
+        <NavLink className='title' to='/'>SWIM TEACH APP</NavLink>
         <NavMenu/>
     </div>
     )

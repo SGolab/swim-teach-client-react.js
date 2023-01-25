@@ -15,6 +15,8 @@
     text-align: center;
 
     padding: 10px;
+
+    cursor: pointer;
 }
 
 .options-item:hover {

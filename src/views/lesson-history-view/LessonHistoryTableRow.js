@@ -1,9 +1,6 @@
 import LessonHistoryTableRowItem from "./LessonHistoryTableRowItem";
 import {useState} from "react";
-import * as PropTypes from "prop-types";
 import SkillMarkList from "./SkillMarkList";
-
-SkillMarkList.propTypes = {skillMarks: PropTypes.any};
 
 function LessonHistoryTableRow({lesson}) {
 

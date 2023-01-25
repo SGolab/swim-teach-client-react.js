@@ -1,8 +1,23 @@
-function PathItem({value, setValue}) {
+import {getImageForStatus} from "../../DataFetching";
+
+function PathItem({value, setValue, isGrayedOut}) {
     return (
-        <div className='path-item' onClick={setValue}>
-            <span> > {value?.title}</span>
-        </div>)
+        <>
+            <div className={'path-item' + (isGrayedOut ? ' grayed-out' : '')} onClick={setValue}>
+                <span>{value?.title}</span>
+            </div>
+            {value.status && <PathItemStatus status={value.status}/>}
+        </>
+    )
 }
 
 export default PathItem;
+
+function PathItemStatus({status}) {
+    return (
+        <div className='path-item grayed-out'>
+            <img src={getImageForStatus(status)} alt='img'/>
+            <span>{status}</span>
+        </div>
+    )
+}

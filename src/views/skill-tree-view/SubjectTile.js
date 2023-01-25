@@ -1,8 +1,17 @@
+import {getLoremIpsum} from "../../DataFetching";
+import ProgressGraph from "./ProgressGraph";
+
 function SubjectTile({subject, setSubject}) {
 
     return (
-        <div className='subject-tile' onClick={() => setSubject(subject)}>
-            <h1>{subject.title}</h1>
+        <div className='skill-tile' onClick={() => setSubject(subject)}>
+            <div className='skill-overview'>
+                <img src='/blocked-icon.png'/>
+                <span>{subject.title}</span>
+            </div>
+            <div className='skill-details'>
+                <span>{subject.description ? subject.description : getLoremIpsum()}</span>
+            </div>
         </div>
     )
 }

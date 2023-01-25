@@ -5,6 +5,8 @@ import {fetchSkillTree} from "../../DataFetching";
 import SubjectsContainer from "./SubjectsContainer";
 import PathHeader from "./PathHeader";
 import SkillsContainer from "./SkillsContainer";
+import SkillPresentation from "./SkillPresentation";
+import {useParams} from "react-router-dom";
 
 function SkillTreeView() {
 
@@ -12,6 +14,8 @@ function SkillTreeView() {
     const [stage, setStage] = useState();
     const [subject, setSubject] = useState();
     const [skill, setSkill] = useState();
+
+    const {skillDetailsId} = useParams()
 
     useEffect(() => {
         const dataFetch = async () => {
@@ -24,7 +28,31 @@ function SkillTreeView() {
         dataFetch()
     }, [])
 
+    useEffect(() => {
+            if (skillDetailsId && data) {
+                function findPathToGivenSkillDetails(json, skillDetailsId) {
+                    for (const stage of json.stages) {
+                        for (const subject of stage.subjects) {
+                            for (const skill of subject.skills) {
+                                if (skill.detailsId == skillDetailsId) {
+                                    setStage(stage)
+                                    setSubject(subject)
+                                    setSkill(skill)
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                findPathToGivenSkillDetails(data, skillDetailsId)
+            }
+        }, [data])
+
     function renderContent() {
+
+        if (skill) {
+            return <SkillPresentation skill={skill}/>
+        }
 
         if (subject) {
             return <SkillsContainer subject={subject} setSkill={setSkill}/>
@@ -44,7 +72,9 @@ function SkillTreeView() {
     return (
         <div className="view">
             <div className='content-container'>
-                <PathHeader stage={stage} setStage={setStage} subject={subject} setSubject={setSubject} skill={skill} setSkill={setSkill}/>
+                <PathHeader stage={stage} setStage={setStage} subject={subject} setSubject={setSubject}
+                            skill={skill}
+                            setSkill={setSkill}/>
                 {renderContent()}
             </div>
         </div>
