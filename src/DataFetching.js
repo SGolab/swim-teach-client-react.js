@@ -8,6 +8,8 @@ export function fetchLessonHistory() {
         .then(content => content.json());
 }
 
+
+
 export function fetchSkillTree() {
     return fetch(API_PATH + '/progressTree', {
         'method': 'GET',
@@ -18,6 +20,14 @@ export function fetchSkillTree() {
 
 export function fetchSkillTreeDataForSwimmerWithId(id) {
     return fetch(API_PATH + `/swimmers/${id}/progressTree`, {
+        'method': 'GET',
+        'headers': getHeaders()
+    })
+        .then(response => response.json())
+}
+
+export async function fetchUserDetails() {
+    return fetch(API_PATH + `/users/${localStorage.getItem('user')}/details`, {
         'method': 'GET',
         'headers': getHeaders()
     })
@@ -64,4 +74,17 @@ export function getImageForStatus(status) {
 
 export function getLoremIpsum() {
     return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+}
+
+export function getColorForStatus(status) {
+    switch (status) {
+        case 'ACQUIRED':
+            return 'hsl(120, 73%, 75%)'
+        case 'TRAINED':
+            return 'hsl(59, 100%, 75%)'
+        case 'NOT_TRAINED':
+            return 'transparent'
+        default:
+            return ''
+    }
 }

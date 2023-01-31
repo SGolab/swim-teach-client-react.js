@@ -1,4 +1,4 @@
-import {getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../DataFetching";
 
 function PathItem({value, setValue, isGrayedOut}) {
     return (
@@ -15,7 +15,7 @@ export default PathItem;
 
 function PathItemStatus({status}) {
     return (
-        <div className='path-item grayed-out'>
+        <div className='path-item grayed-out' style={{backgroundColor: getColorForStatus(status)}}>
             <img src={getImageForStatus(status)} alt='img'/>
             <span>{status}</span>
         </div>

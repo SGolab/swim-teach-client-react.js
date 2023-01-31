@@ -1,12 +1,11 @@
 import {useEffect, useState} from "react";
-import StagesContainer from "./StagesContainer";
+import ItemsContainer from "./ItemsContainer";
 import './SkillTreeView.css'
 import {fetchSkillTree} from "../../DataFetching";
-import SubjectsContainer from "./SubjectsContainer";
 import PathHeader from "./PathHeader";
-import SkillsContainer from "./SkillsContainer";
 import SkillPresentation from "./SkillPresentation";
 import {useParams} from "react-router-dom";
+import SkillsContainer from "./SkillsContainer";
 
 function SkillTreeView() {
 
@@ -55,15 +54,15 @@ function SkillTreeView() {
         }
 
         if (subject) {
-            return <SkillsContainer subject={subject} setSkill={setSkill}/>
+            return <SkillsContainer items={subject.skills} setItem={setSkill}/>
         }
 
         if (stage) {
-            return <SubjectsContainer stage={stage} setSubject={setSubject}/>
+            return <ItemsContainer items={stage.subjects} setItem={setSubject}/>
         }
 
         if (data) {
-            return <StagesContainer stages={data.stages} setStage={setStage}/>
+            return <ItemsContainer items={data.stages} setItem={setStage}/>
         } else {
             return <h1>Loading...</h1>
         }
@@ -72,9 +71,9 @@ function SkillTreeView() {
     return (
         <div className="view">
             <div className='content-container'>
-                <PathHeader stage={stage} setStage={setStage} subject={subject} setSubject={setSubject}
-                            skill={skill}
-                            setSkill={setSkill}/>
+                <PathHeader stage={stage} setStage={setStage}
+                            subject={subject} setSubject={setSubject}
+                            skill={skill} setSkill={setSkill}/>
                 {renderContent()}
             </div>
         </div>

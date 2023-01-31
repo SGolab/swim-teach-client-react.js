@@ -12,6 +12,66 @@
 }
 
 .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.skill-tile {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+
+    transition: .3s;
+}
+
+.skill-tile > img {
+    height: 60px;
+}
+
+.skill-tile:has(span):hover {
+    background-color: var(--tile-background-hover);
+    cursor: pointer;
+}
+
+.status-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: end;
+    align-items: start;
+
+    width: 80px;
+    aspect-ratio: 1/1;
+
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    background-color: black;
+}
+
+.status-label > img {
+    height: 40px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+
+.items-container {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -22,7 +82,7 @@
     width: 100%;
 }
 
-.skill-tile {
+.item-tile {
     flex-grow: 1;
 
     width: 100%;
@@ -38,14 +98,15 @@
     transition: .3s;
 }
 
-.skill-tile:hover {
+.item-tile:has(.skill-details):hover {
     grid-template-columns: 3fr 5fr 2fr;
+}
+
+.item-tile:hover {
     background-color: var(--tile-background-hover);
 }
 
 .skill-overview {
-    grid-column: 1/1;
-
     height: 100%;
 
     display: flex;
@@ -59,7 +120,7 @@
     font-weight: bold;
 }
 
-.skill-tile:hover > .skill-overview {
+.item-tile:hover > .skill-overview {
     box-shadow: var(--light-shadow);
     clip-path: inset(0px -15px 0px 0px);
 
@@ -75,8 +136,6 @@
 }
 
 .skill-details {
-    grid-column: 2/2;
-
     height: 100%;
 
     display: flex;
@@ -91,6 +150,11 @@
     overflow: hidden;
 }
 
+
+.item-tile:not(:has(.skill-details)) .progress-graph {
+    grid-column: 3/3;
+}
+
 .skill-details > span {
     width: 350px;
     min-width: 350px;
@@ -103,8 +167,6 @@
 }
 
 .progress-graph {
-    grid-column: 3/3;
-
     display: grid;
 
     box-shadow: var(--light-shadow);

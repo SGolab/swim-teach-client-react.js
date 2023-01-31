@@ -1,5 +1,5 @@
 import './LoginView.css'
-import {fetchPostLogin} from "../../DataFetching";
+import {fetchPostLogin, fetchUserDetails} from "../../DataFetching";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -25,6 +25,7 @@ function LoginView() {
                 }
 
                 if (response.ok) {
+
                     let token;
                     let user;
 
@@ -41,8 +42,15 @@ function LoginView() {
                     if (token) {
                         localStorage.setItem('jwtToken', token)
                         localStorage.setItem('user', user)
-                        navigate('/')
                     }
+                }
+            })
+            .then(() => fetchUserDetails())
+            .then((data) => {
+                if (data.roleNames.includes("ADMIN")) {
+                    navigate('/admin')
+                } else if (data.roleNames.includes("CLIENT")) {
+                    navigate('/')
                 }
             })
 

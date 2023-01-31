@@ -1,9 +1,9 @@
-import SkillMarkContainer from "./SkillMarkContainer";
+import SkillMarkItem from "./SkillMarkItem";
 
 function SkillMarkList({skillMarks}) {
     return (
         <div className='skillmark-list'>
-            {skillMarks.map(sm => <SkillMarkContainer skillMark={sm}/>)}
+            {skillMarks.map(sm => <SkillMarkItem skillMark={sm}/>)}
         </div>
     );
 }
