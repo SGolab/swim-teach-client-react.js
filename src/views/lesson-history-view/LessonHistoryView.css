@@ -9,6 +9,8 @@
 
     margin-top: 50px;
     margin-bottom: 50px;
+
+    overflow: hidden;
 }
 
 .lesson-history-table-header {
@@ -38,7 +40,6 @@
 
     min-height: 7%;
     width: 100%;
-    overflow: hidden;
 }
 
 .skillmark-list {

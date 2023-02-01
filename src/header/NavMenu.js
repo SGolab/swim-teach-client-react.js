@@ -15,10 +15,11 @@ function NavMenu() {
 
     return (
         <div className='nav-menu'>
-            <NavLink className='nav-item' to="/skillTree">SKILL TREE</NavLink>
+            <NavLink className='nav-item' to="/skillTree">SKILLS</NavLink>
             <NavLink className='nav-item' to="/lessonHistory">LESSON HISTORY</NavLink>
+            <NavLink className='nav-item' to="/homework">HOMEWORK</NavLink>
             <div className='nav-item'>
-                <span>OPTIONS</span>
+                <img src='/menu.png'/>
                 <div className='dropdown-menu'>
                     <div className='dropdown-item' onClick={handleUserDetails}>USER DETAILS</div>
                     <div className='dropdown-item'>HELP</div>

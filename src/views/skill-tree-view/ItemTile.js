@@ -1,4 +1,4 @@
-import {getImageForStatus, getLoremIpsum} from "../../DataFetching";
+import {getImageForStatus, getImageForTitle, getLoremIpsum} from "../../DataFetching";
 import {useEffect, useState} from "react";
 import ProgressGraph from "./ProgressGraph";
 
@@ -13,7 +13,7 @@ function ItemTile({item, setItem}) {
     return (
         <div className='item-tile' onClick={() => setItem(item)}>
             <div className='skill-overview'>
-                <img src={item.status ? getImageForStatus(item.status) : '/logo192.png'}/>
+                <img src={item.status ? getImageForStatus(item.status) : getImageForTitle(item.title)}/>
                 <span>{item.title}</span>
             </div>
             {item.description && <div className='skill-details'><span>{item.description}</span></div>}

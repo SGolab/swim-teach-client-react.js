@@ -1,0 +1,40 @@
+.homework-container {
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 5fr 3fr;
+    gap: 0;
+}
+
+.homework-items-list {
+    grid-column: 1/1;
+    grid-row: 1/3;
+
+    margin: 10px 5px 10px 10px;
+
+    box-shadow: var(--light-shadow);
+}
+
+.homework-details {
+    grid-column: 2/2;
+    grid-row: 1/1;
+
+    margin: 10px 10px 5px 5px;
+
+    box-shadow: var(--light-shadow);
+}
+
+.homework-skill-list {
+    grid-column: 2/2;
+    grid-row: 2/2;
+
+    margin: 5px 10px 10px 5px;
+
+    box-shadow: var(--light-shadow);
+}
