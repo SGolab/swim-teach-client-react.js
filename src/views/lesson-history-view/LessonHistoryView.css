@@ -42,6 +42,19 @@
     width: 100%;
 }
 
+.lesson-history-table-row-item {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+
+    margin-top: 5px;
+
+    gap: 10px;
+    height: 100%;
+}
+
 .skillmark-list {
     display: grid;
     grid-template-rows: auto;
@@ -89,17 +102,6 @@
 .skillmark-status-label img {
     margin: 5px;
     height: 40px;
-}
-
-.lesson-history-table-row-item {
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    text-align: center;
-    white-space: nowrap;
-
-    gap: 10px;
-    height: 100%;
 }
 
 .image-container {

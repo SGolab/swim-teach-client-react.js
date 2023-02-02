@@ -9,8 +9,15 @@ function SkillsContainer({items, setItem}) {
 }
 
 function SkillTile({skill, setSkill}) {
+
+    const handleClick = function() {
+        if (skill.status !== 'NOT_TRAINED') {
+            setSkill(skill)
+        }
+    }
+
     return (
-        <div className='skill-tile' onClick={() => setSkill(skill)}>
+        <div className='skill-tile' onClick={handleClick}>
             {(skill.status === 'NOT_TRAINED') ? <img src={getImageForStatus(skill.status)}/>
                 :
                 <>

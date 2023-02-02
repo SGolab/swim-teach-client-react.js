@@ -60,6 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     margin: 10px 10px 10px 5px;
 
@@ -143,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     color: gray;
     background-color: var(--tile-background-hover);
