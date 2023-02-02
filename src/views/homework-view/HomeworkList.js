@@ -13,7 +13,8 @@ export default HomeworkList;
 function HomeworkItem({homeworkItem, selected, setHomeworkItem}) {
     return (
         <div className={'homework-item' + (selected ? ' selected' : '')} onClick={() => setHomeworkItem(homeworkItem)}>
-            {homeworkItem.dateTime}
+            <span>HOMEWORK</span>
+            <span style={{fontWeight: "normal", fontSize:'1.4rem'}}>{homeworkItem.date}</span>
         </div>
     )
 }

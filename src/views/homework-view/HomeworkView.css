@@ -32,6 +32,7 @@
 
 .homework-item {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -55,6 +56,17 @@
     background-color: var(--tile-background-hover);
 }
 
+.select-homework-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px 10px 10px 5px;
+
+    background-color: var(--tile-background-hover);
+    color: gray;
+}
+
 .homework-details {
     display: grid;
     grid-template-columns: 1fr;
@@ -73,8 +85,18 @@
 
     max-height: 100%;
 
-    /*overflow: -moz-scrollbars-vertical;*/
     overflow-y: scroll;
+}
+
+.homework-skill-list::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+.homework-skill-list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
 .homework-skill-item {
@@ -115,6 +137,15 @@
 
 .homework-skill-item .full-details-btn:hover {
     text-decoration: underline;
+}
+
+.select-skill-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: gray;
+    background-color: var(--tile-background-hover);
 }
 
 .homework-skill-preview {
