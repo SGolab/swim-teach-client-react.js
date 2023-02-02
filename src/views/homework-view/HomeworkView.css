@@ -48,11 +48,7 @@
     cursor: pointer;
 }
 
-.homework-item:hover {
-    background-color: var(--tile-background-hover);
-}
-
-.homework-item.selected {
+.homework-item:hover, .homework-item.selected {
     background-color: var(--tile-background-hover);
 }
 
@@ -96,8 +92,8 @@
 
 .homework-skill-list::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 .homework-skill-item {
@@ -105,6 +101,9 @@
     align-items: center;
     gap: 5px;
 
+    flex-shrink: 0;
+
+    height: 50px;
     margin: 5px;
     box-shadow: var(--light-shadow);
 
@@ -132,7 +131,7 @@
     visibility: hidden;
 }
 
-.homework-skill-item:hover .full-details-btn {
+.homework-skill-item:hover .full-details-btn, .homework-skill-item.selected .full-details-btn {
     visibility: visible;
 }
 
@@ -145,6 +144,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    min-height: 100px;
 
     color: gray;
     background-color: var(--tile-background-hover);
@@ -167,11 +168,24 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 
 .video-container > iframe {
     aspect-ratio: 16/9;
     width: 95%;
+}
+
+.custom-skill-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+
+    margin-top: 15px;
+    margin-bottom: 75px;
+
+    height: 100%;
+    width: 100%;
 }

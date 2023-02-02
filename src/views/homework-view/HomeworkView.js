@@ -25,7 +25,7 @@ function HomeworkView() {
     return (
         <div className='view'>
             <div className='homework-container'>
-                {data ? <HomeworkList homeworkList={data?.homeworks} selectedHomeworkItem={homeworkItem} setHomeworkItem={setHomeworkItem}/> : <h1>Loading...</h1>}
+                {data ? <HomeworkList homeworkList={data.homeworks} selectedHomeworkItem={homeworkItem} setHomeworkItem={setHomeworkItem}/> : <h1>Loading...</h1>}
                 {homeworkItem ? <HomeworkDetails homeworkItem={homeworkItem}/> : <h1 className='select-homework-text'>SELECT HOMEWORK TO SEE PREVIEW</h1>}
             </div>
         </div>
