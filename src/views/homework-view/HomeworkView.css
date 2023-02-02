@@ -2,39 +2,143 @@
     width: 90%;
     max-width: 800px;
     height: 80%;
+    max-height: 80vh;
 
     background-color: var(--tile-background);
     box-shadow: var(--light-shadow);
 
     display: grid;
     grid-template-columns: 2fr 3fr;
-    grid-template-rows: 5fr 3fr;
+    grid-template-rows: minmax(0, 1fr);
     gap: 0;
 }
 
-.homework-items-list {
+.homework-list {
     grid-column: 1/1;
     grid-row: 1/3;
 
     margin: 10px 5px 10px 10px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.homework-item:first-of-type {
+    margin-top: 5px;
+}
+
+.homework-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     box-shadow: var(--light-shadow);
+    margin-left: 5px;
+    margin-right: 5px;
+
+    height: 50px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.homework-item:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.homework-item.selected {
+    background-color: var(--tile-background-hover);
 }
 
 .homework-details {
-    grid-column: 2/2;
-    grid-row: 1/1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, min-content) 1fr;
 
-    margin: 10px 10px 5px 5px;
+    background-color: var(--tile-background-hover);
 
-    box-shadow: var(--light-shadow);
+    margin: 10px 10px 10px 5px;
 }
 
 .homework-skill-list {
-    grid-column: 2/2;
-    grid-row: 2/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
 
-    margin: 5px 10px 10px 5px;
+    max-height: 100%;
 
+    /*overflow: -moz-scrollbars-vertical;*/
+    overflow-y: scroll;
+}
+
+.homework-skill-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin: 5px;
     box-shadow: var(--light-shadow);
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+.homework-skill-item:hover, .homework-skill-item.selected {
+    backdrop-filter: brightness(95%);
+}
+
+.homework-skill-item img {
+    width: 40px;
+    box-shadow: var(--light-shadow);
+    padding: 5px;
+}
+
+.homework-skill-item .full-details-btn {
+    position: absolute;
+    right: 10px;
+
+    font-size: 1.2rem;
+    color: gray;
+    visibility: hidden;
+}
+
+.homework-skill-item:hover .full-details-btn {
+    visibility: visible;
+}
+
+.homework-skill-item .full-details-btn:hover {
+    text-decoration: underline;
+}
+
+.homework-skill-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    padding: 10px;
+
+    font-size: 1.5rem;
+}
+
+.homework-skill-preview .video-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.video-container > iframe {
+    aspect-ratio: 16/9;
+    width: 95%;
 }

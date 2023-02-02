@@ -8,10 +8,16 @@ export function fetchLessonHistory() {
         .then(content => content.json());
 }
 
-
-
 export function fetchSkillTree() {
     return fetch(API_PATH + '/progressTree', {
+        'method': 'GET',
+        'headers': getHeaders()
+    })
+        .then(content => content.json());
+}
+
+export function fetchHomework() {
+    return fetch(API_PATH + '/homework', {
         'method': 'GET',
         'headers': getHeaders()
     })
