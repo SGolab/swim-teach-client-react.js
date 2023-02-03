@@ -5,11 +5,12 @@ function NavMenu() {
     const navigate = useNavigate();
 
     function handleUserDetails() {
-        //todo
+        navigate('/userDetails')
     }
 
     function handleLogOut() {
         localStorage.removeItem('jwtToken')
+        localStorage.removeItem('user')
         navigate('/login')
     }
 
