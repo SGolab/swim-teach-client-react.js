@@ -1,26 +1,13 @@
 import './HomeworkView.css'
-import {useEffect, useState} from "react";
-import {fetchHomework} from "../../DataFetching";
+import {useState} from "react";
 import HomeworkList from "./HomeworkList";
-import HomeworkSkillPreview from "./HomeworkSkillPreview";
-import HomeworkSkillList from "./HomeworkSkillList";
 import HomeworkDetails from "./HomeworkDetails";
+import useFetch from "../../useFetch";
 
 function HomeworkView() {
 
-    const [data, setData] = useState();
+    const [data] = useFetch(`/homework`)
     const [homeworkItem, setHomeworkItem] = useState();
-
-    useEffect(() => {
-        const dataFetch = async () => {
-            const json = await (
-                await fetchHomework()
-            );
-
-            setData(json)
-        }
-        dataFetch()
-    }, [])
 
     return (
         <div className='view'>

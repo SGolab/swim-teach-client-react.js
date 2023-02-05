@@ -1,22 +1,10 @@
 import './AdminView.css'
 import AdminTable from "./AdminTable";
-import {useEffect, useState} from "react";
-import {fetchSwimmers} from "../../DataFetching";
+import useFetch from "../../useFetch";
 
 function AdminView() {
 
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        const dataFetch = async () => {
-            const json = await (
-                await fetchSwimmers()
-            );
-
-            setData(json)
-        }
-        dataFetch()
-    }, [])
+    const [data] = useFetch(`/swimmers`)
 
     return (
         <div className='view'>

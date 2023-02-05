@@ -1,21 +1,8 @@
-import {useEffect, useState} from "react";
-import {fetchUserDetails} from "../../DataFetching";
+import useFetch from "../../useFetch";
 
 function UserDetailsView() {
 
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        const dataFetch = async () => {
-            const json = await (
-                await fetchUserDetails()
-            );
-
-            setData(json)
-        }
-        dataFetch()
-    }, [])
-
+    const [data] = useFetch(`/userDetails`)
 
     return (
         <div>{JSON.stringify(data, null, 5)}</div>

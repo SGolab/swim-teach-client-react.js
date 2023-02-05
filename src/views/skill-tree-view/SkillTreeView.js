@@ -6,26 +6,17 @@ import PathHeader from "./PathHeader";
 import SkillPresentation from "./SkillPresentation";
 import {useParams} from "react-router-dom";
 import SkillsContainer from "./SkillsContainer";
+import useFetch from "../../useFetch";
 
 function SkillTreeView() {
 
-    const [data, setData] = useState();
+    const [data] = useFetch(`/progressTree`)
+
     const [stage, setStage] = useState();
     const [subject, setSubject] = useState();
     const [skill, setSkill] = useState();
 
     const {skillDetailsId} = useParams()
-
-    useEffect(() => {
-        const dataFetch = async () => {
-            const json = await (
-                await fetchSkillTree()
-            );
-
-            setData(json)
-        }
-        dataFetch()
-    }, [])
 
     useEffect(() => {
             if (skillDetailsId && data) {
@@ -45,7 +36,7 @@ function SkillTreeView() {
                 }
                 findPathToGivenSkillDetails(data, skillDetailsId)
             }
-        }, [data])
+        }, [data, skillDetailsId])
 
     function renderContent() {
 

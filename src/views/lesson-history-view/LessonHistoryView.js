@@ -1,22 +1,10 @@
-import {useEffect, useState} from "react";
 import './LessonHistoryView.css'
 import LessonHistoryTable from "./LessonHistoryTable";
-import {fetchLessonHistory} from "../../DataFetching";
+import useFetch from "../../useFetch";
 
 function LessonHistoryView() {
 
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        const dataFetch = async () => {
-            const json = await (
-                await fetchLessonHistory()
-            );
-
-            setData(json)
-        }
-        dataFetch()
-    }, [])
+    const [data] = useFetch(`/lessonHistory`)
 
     return (
         <div className="view">
