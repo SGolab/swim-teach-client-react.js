@@ -16,6 +16,7 @@ function ViewContainer() {
                 <Route path='skillTree/:skillDetailsId' element={<SkillTreeView/>}></Route>
                 <Route path='lessonHistory' element={<LessonHistoryView/>}></Route>
                 <Route path='homework' element={<HomeworkView/>}></Route>
+                <Route path='homework/:homeworkId' element={<HomeworkView/>}></Route>
                 <Route path='userDetails' element={<UserDetailsView/>}></Route>
                 <Route path='*' element={<NotFoundView/>}></Route>
             </Routes>

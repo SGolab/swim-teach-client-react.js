@@ -1,13 +1,20 @@
 import './Header.css'
 import NavMenu from "./NavMenu";
-import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Header() {
+
+    const navigate = useNavigate();
+
+
     return (
-    <div className='header'>
-        <NavLink className='title' to='/'>SWIM TEACH APP</NavLink>
-        <NavMenu/>
-    </div>
+        <div className='header'>
+            <div className='title-container' onClick={() => navigate('/')}>
+                <img src='/main-logo.png'/>
+                SWIM TEACH APP
+            </div>
+            <NavMenu/>
+        </div>
     )
 }
 

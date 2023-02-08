@@ -1,13 +1,5 @@
 const API_PATH = 'http://localhost:8080'
 
-export function fetchLessonHistory() {
-    return fetch(API_PATH + '/lessonHistory', {
-        'method': 'GET',
-        'headers': getHeaders()
-    })
-        .then(content => content.json());
-}
-
 export function fetchSkillTree() {
     return fetch(API_PATH + '/progressTree', {
         'method': 'GET',
@@ -16,36 +8,12 @@ export function fetchSkillTree() {
         .then(content => content.json());
 }
 
-export function fetchHomework() {
-    return fetch(API_PATH + '/homework', {
-        'method': 'GET',
-        'headers': getHeaders()
-    })
-        .then(content => content.json());
-}
-
-export function fetchSkillTreeDataForSwimmerWithId(id) {
-    return fetch(API_PATH + `/swimmers/${id}/progressTree`, {
-        'method': 'GET',
-        'headers': getHeaders()
-    })
-        .then(response => response.json())
-}
-
 export async function fetchUserDetails() {
-    return fetch(API_PATH + `/users/${localStorage.getItem('user')}/details`, {
+    return fetch(API_PATH + `/userDetails`, {
         'method': 'GET',
         'headers': getHeaders()
     })
         .then(response => response.json())
-}
-
-export function fetchSwimmers() {
-    return fetch(API_PATH + '/swimmers', {
-        'method': 'GET',
-        'headers': getHeaders()
-    })
-        .then(content => content.json());
 }
 
 export function fetchPostLogin(loginData) {

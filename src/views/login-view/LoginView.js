@@ -2,6 +2,7 @@ import './LoginView.css'
 import {fetchPostLogin, fetchUserDetails} from "../../DataFetching";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
+import useFetch from "../../useFetch";
 
 function LoginView() {
 
@@ -41,7 +42,6 @@ function LoginView() {
 
                     if (token) {
                         localStorage.setItem('jwtToken', token)
-                        localStorage.setItem('user', user)
                     }
                 }
             })
