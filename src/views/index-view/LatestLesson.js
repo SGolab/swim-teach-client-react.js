@@ -8,12 +8,9 @@ function LatestLesson({lesson}) {
     return (
         <div className={styles.latestLessonContainer}>
 
-            <div className={styles.titleContainer}>
+            <div className={styles.titleContainer} onClick={() => navigate('/lessonHistory')}>
                 <img src={'teach.png'}/>
                 LATEST LESSON
-            </div>
-            <div className={styles.btnContainer}>
-                <div className={styles.detailsBtn} onClick={() => navigate('/lessonHistory')}>FULL DETAILS</div>
             </div>
 
 

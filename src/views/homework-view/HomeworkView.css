@@ -122,23 +122,6 @@
     padding: 5px;
 }
 
-.homework-skill-item .full-details-btn {
-    position: absolute;
-    right: 10px;
-
-    font-size: 1.2rem;
-    color: gray;
-    visibility: hidden;
-}
-
-.homework-skill-item:hover .full-details-btn, .homework-skill-item.selected .full-details-btn {
-    visibility: visible;
-}
-
-.homework-skill-item .full-details-btn:hover {
-    text-decoration: underline;
-}
-
 .select-skill-text {
     display: flex;
     justify-content: center;
@@ -171,6 +154,25 @@
     align-items: start;
 }
 
+.full-details-btn {
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    outline: solid black 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.full-details-btn:hover {
+    background-color: var(--tile-background-hover);
+}
 
 .video-container > iframe {
     aspect-ratio: 16/9;

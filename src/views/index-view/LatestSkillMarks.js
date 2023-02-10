@@ -1,16 +1,17 @@
 import styles from "./IndexView.module.css"
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../Utils";
+import {useNavigate} from "react-router-dom";
 
 function LatestSkillMarks({skillMarks}) {
+
+    const navigate = useNavigate();
+
     return (
         <div className={styles.latestSkillMarksContainer}>
-            <div className={styles.titleContainer}>
+
+            <div className={styles.titleContainer} onClick={() => navigate('/lessonHistory')}>
                 <img src={'self-control.png'}/>
                 LATEST SKILL MARKS
-            </div>
-
-            <div className={styles.btnContainer}>
-                <div className={styles.detailsBtn}>FULL DETAILS</div>
             </div>
 
             <div className={styles.skillMarksList}>
@@ -19,7 +20,7 @@ function LatestSkillMarks({skillMarks}) {
                         <div className={styles.imageContainer} style={{backgroundColor: getColorForStatus(sm.skillStatus)}}>
                             <img src={getImageForStatus(sm.skillStatus)}/>
                         </div>
-                        {sm.skillDetailsTitle}
+                        <span>{sm.skillDetailsTitle}</span>
                     </div>)}
             </div>
 

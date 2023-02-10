@@ -4,8 +4,12 @@ import CurrentHomework from "./CurrentHomework";
 import LatestSkillMarks from "./LatestSkillMarks";
 import useFetch from "../../useFetch";
 import ProgressBar from "./ProgressBar";
+import useIsMobile from "../../useIsMobile";
+import NavBtnBar from "./NavBtnBar";
 
 function IndexView() {
+
+    const isMobile = useIsMobile()
 
     const [userData] = useFetch("/userDetails")
     const [homeworkData] = useFetch("/homework")
@@ -14,8 +18,19 @@ function IndexView() {
 
     return (
         <div className={styles.indexView}>
-            <div className={styles.greeting}>{'Hello again, ' + (userData?.firstName ? userData.firstName : '')}</div>
+
+            {!isMobile &&
+                <div className={styles.greeting}>
+                    {'Hello again, ' + (userData?.firstName ? userData.firstName : '')}
+                </div>
+            }
+
             <ProgressBar skillsData={skillsData}/>
+
+            {isMobile &&
+                <NavBtnBar/>
+            }
+
             <div className={styles.contentContainer}>
                 <LatestLesson lesson={lessonData?.lessons[0]}/>
                 <CurrentHomework homeworkItem={homeworkData?.homeworks[0]}/>

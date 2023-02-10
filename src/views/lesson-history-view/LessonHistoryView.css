@@ -1,3 +1,14 @@
+.lesson-history-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
+}
+
 .lesson-history-table {
     display: flex;
     flex-direction: column;
@@ -32,7 +43,7 @@
 .lesson-history-table-row {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 2fr 5fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 5fr);
     gap: 10px;
 
     background-color: var(--tile-background);

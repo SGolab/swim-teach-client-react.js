@@ -1,5 +1,5 @@
 import './LoginView.css'
-import {fetchPostLogin, fetchUserDetails} from "../../DataFetching";
+import {fetchPostLogin, fetchUserDetails} from "../../Utils";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import useFetch from "../../useFetch";

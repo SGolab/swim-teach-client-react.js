@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import ItemsContainer from "./ItemsContainer";
 import './SkillTreeView.css'
-import {fetchSkillTree} from "../../DataFetching";
+import {fetchSkillTree} from "../../Utils";
 import PathHeader from "./PathHeader";
 import SkillPresentation from "./SkillPresentation";
 import {useParams} from "react-router-dom";

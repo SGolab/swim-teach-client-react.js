@@ -1,4 +1,4 @@
-import {getImageForStatus, getImageForTitle, getLoremIpsum} from "../../DataFetching";
+import {getImageForStatus, getImageForTitle, getLoremIpsum} from "../../Utils";
 import {useEffect, useState} from "react";
 import ProgressGraph from "./ProgressGraph";
 

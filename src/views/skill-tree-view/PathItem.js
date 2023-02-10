@@ -1,23 +1,16 @@
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import useIsMobile from "../../useIsMobile";
 
-function PathItem({value, setValue, isGrayedOut}) {
+function PathItem({value, setValue, isGrayedOut, isCropped}) {
+
+    const isMobile = useIsMobile();
+
     return (
         <>
-            <div className={'path-item' + (isGrayedOut ? ' grayed-out' : '')} onClick={setValue}>
+            <div className={'path-item' + (isGrayedOut ? ' grayed-out' : '')} style={{width: ((isMobile && isCropped) ? '50px' : 'auto')}} onClick={setValue}>
                 <span>{value?.title}</span>
             </div>
-            {value.status && <PathItemStatus status={value.status}/>}
         </>
     )
 }
 
 export default PathItem;
-
-function PathItemStatus({status}) {
-    return (
-        <div className='path-item grayed-out' style={{backgroundColor: getColorForStatus(status)}}>
-            <img src={getImageForStatus(status)} alt='img'/>
-            <span>{status}</span>
-        </div>
-    )
-}

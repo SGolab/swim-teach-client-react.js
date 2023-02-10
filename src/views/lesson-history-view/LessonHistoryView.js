@@ -8,7 +8,9 @@ function LessonHistoryView() {
 
     return (
         <div className="view">
-            {data ? <LessonHistoryTable lessons={data?.lessons}/> : <h1>Loading...</h1>}
+            <div className={'lesson-history-table-container'}>
+                {data ? <LessonHistoryTable lessons={data?.lessons}/> : <h1>Loading...</h1>}
+            </div>
         </div>
     )
 }

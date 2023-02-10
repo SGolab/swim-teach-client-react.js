@@ -50,7 +50,27 @@ const imageTitleMap = {
     'PURE BASICS': '/star.png',
     'STROKES BASICS': '/star2.png',
     'STROKES ADVANCED': '/star3.png',
-    'EXTRAS': '/extra.png'
+    'EXTRAS': '/extra.png',
+
+    'LEG MOVEMENT': 'leg-movement.png',
+    'ARM MOVEMENT': 'arm-movement.png',
+    'DIVING': 'diving.png',
+
+    'BACKSTROKE BASICS': '/body-part.png',
+    'BACKSTROKE ADVANCED': '/body-part.png',
+
+    'FREESTYLE BASICS': 'freestyle.png',
+    'FREESTYLE ADVANCED': 'freestyle.png',
+
+    'BREASTSTROKE BASICS': 'frog.png',
+    'BREASTSTROKE ADVANCED': 'frog.png',
+
+    'BUTTERFLY BASICS': 'butterfly.png',
+    'BUTTERFLY ADVANCED': 'butterfly.png',
+
+    'JUMPS': 'jumps.png'
+
+
 }
 
 export function getImageForTitle(title) {

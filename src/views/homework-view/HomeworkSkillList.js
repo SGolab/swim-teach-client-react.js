@@ -1,4 +1,4 @@
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../Utils";
 import {useNavigate} from "react-router-dom";
 
 function HomeworkSkillList({homeworkItem, skillSelected, setSkillSelected}) {
@@ -29,7 +29,6 @@ function HomeworkSkillItem({skill, skillSelected, setSkillSelected}) {
                     <div className={'homework-skill-item' + (skillSelected === skill ? ' selected' : '')} onClick={() => setSkillSelected(skill)}>
                         <img src={getImageForStatus(skill.status)} style={{backgroundColor: getColorForStatus(skill.status)}}/>
                         <span>{skill.title}</span>
-                        <span className='full-details-btn' onClick={handleClickSeeFullDetails}>FULL DETAILS</span>
                     </div>
                     :
                     <div className={'homework-skill-item' + (skillSelected === skill ? ' selected' : '')} onClick={() => setSkillSelected(skill)}>

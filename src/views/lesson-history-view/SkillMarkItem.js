@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../Utils";
 
 function SkillMarkItem({skillMark}) {
 

@@ -1,5 +1,5 @@
 import styles from "./IndexView.module.css";
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../Utils";
 import {useNavigate} from "react-router-dom";
 
 function CurrentHomework({homeworkItem}) {
@@ -14,13 +14,10 @@ function CurrentHomework({homeworkItem}) {
 
     return (
         <div className={styles.currentHomeworkContainer}>
-            <div className={styles.titleContainer}>
+
+            <div className={styles.titleContainer} onClick={handleFullDetails}>
                 <img src={'write.png'}/>
                 CURRENT HOMEWORK
-            </div>
-
-            <div className={styles.btnContainer}>
-                <div className={styles.detailsBtn} onClick={handleFullDetails}>FULL DETAILS</div>
             </div>
 
             <div className={styles.dateContainer}>{homeworkItem?.date}</div>

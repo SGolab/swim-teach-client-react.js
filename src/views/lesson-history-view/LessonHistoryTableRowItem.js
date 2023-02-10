@@ -1,4 +1,4 @@
-import {getImageForStatus} from "../../DataFetching";
+import {getImageForStatus} from "../../Utils";
 
 function LessonHistoryTableRowItem({text, skillMarks}) {
     return (

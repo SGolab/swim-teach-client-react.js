@@ -1,24 +1,26 @@
 .content-container {
-    width: 80%;
+    width: 90%;
     max-width: 800px;
-    height: 80%;
+    height: 90%;
+    max-height: 800px;
 
     gap: 5px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    display: grid;
+    grid-template-columns: minmax(0, 100%);
+    grid-template-rows: min-content;
+
+    overflow: visible;
 }
 
 .skills-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: 1fr 1fr 1fr;
     gap: 10px;
 
-    height: 100%;
     width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .skill-tile {
@@ -40,8 +42,8 @@
     transition: .3s;
 }
 
-.skill-tile > img {
-    height: 60px;
+.skill-tile img {
+    height: 10vw;
 }
 
 .skill-tile:has(span):hover {
@@ -58,7 +60,7 @@
     justify-content: end;
     align-items: start;
 
-    width: 80px;
+    width: 10vw;
     aspect-ratio: 1/1;
 
     clip-path: polygon(0 0, 100% 100%, 100% 0);
@@ -66,7 +68,7 @@
 }
 
 .status-label > img {
-    height: 40px;
+    height: 5vw;
     margin-right: 3px;
     margin-top: 3px;
 }
@@ -96,6 +98,12 @@
     cursor: pointer;
 
     transition: .3s;
+}
+
+@media (max-width: 600px) {
+    .item-tile {
+        grid-template-columns: 5fr 0fr 3fr;
+    }
 }
 
 .item-tile:has(.skill-details):hover {
@@ -133,6 +141,8 @@
 
 .skill-overview > span {
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .skill-details {
@@ -227,6 +237,8 @@
 .skill-presentation > h1 {
     font-size: 3rem;
     text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .skill-presentation > p {
@@ -246,12 +258,8 @@
 
 .path-header {
     display: flex;
-    align-items: center;
-    height: 35px;
-}
-
-.path-header > h1 {
-    color: gray;
+    align-items: start;
+    overflow: hidden;
 }
 
 .path-item {
@@ -261,7 +269,7 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    height: 100%;
+    height: 35px;
 
     background-color: var(--tile-background);
     box-shadow: var(--light-shadow);
@@ -273,6 +281,14 @@
     transform: skew(20deg) translateX(-5px);
 
     cursor: pointer;
+
+    overflow: hidden;
+}
+
+.path-item > span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .path-item:hover {

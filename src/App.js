@@ -17,10 +17,10 @@ function AdminView() {
 
 function ClientView() {
     return (
-        <>
+        <div className={'default-layout'}>
             <Header/>
             <ViewContainer/>
-        </>
+        </div>
     )
 }
 

@@ -1,6 +1,10 @@
 import PathItem from "./PathItem";
+import useIsMobile from "../../useIsMobile";
+import PathItemStatus from "./PathItemStatus";
 
 function PathHeader({stage, setStage, subject, setSubject, skill, setSkill}) {
+
+    const isMobile = useIsMobile();
 
     function handleClickEmpty() {
         setStage(undefined)
@@ -18,12 +22,17 @@ function PathHeader({stage, setStage, subject, setSubject, skill, setSkill}) {
     }
 
     return (
-        <div className='path-header'>
-            <div className='path-item empty' onClick={handleClickEmpty}><span> > </span></div>
-            {stage && <PathItem value={stage} setValue={handleClickStage} isGrayedOut={!subject}/>}
-            {subject && <PathItem value={subject} setValue={handleClickSubject} isGrayedOut={!skill}/>}
-            {skill && <PathItem value={skill} isGrayedOut={true}/>}
-        </div>
+        <>
+            <div className='path-header'>
+                <div className='path-item empty' onClick={handleClickEmpty}><span> > </span></div>
+                {stage && <PathItem value={stage} setValue={handleClickStage} isGrayedOut={!subject} isCropped={subject}/>}
+                {subject && <PathItem value={subject} setValue={handleClickSubject} isGrayedOut={!skill} isCropped={skill}/>}
+                {skill && <PathItem value={skill} isGrayedOut={true} isCropped={true}/>}
+                {skill?.status && <PathItemStatus status={skill.status}/>}
+            </div>
+
+        </>
+
     )
 }
 

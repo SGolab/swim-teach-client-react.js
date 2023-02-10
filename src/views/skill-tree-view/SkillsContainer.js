@@ -1,4 +1,4 @@
-import {getColorForStatus, getImageForStatus} from "../../DataFetching";
+import {getColorForStatus, getImageForStatus} from "../../Utils";
 
 function SkillsContainer({items, setItem}) {
     return (
