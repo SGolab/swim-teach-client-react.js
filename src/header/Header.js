@@ -6,12 +6,11 @@ function Header() {
 
     const navigate = useNavigate();
 
-
     return (
         <div className='header'>
             <div className='title-container' onClick={() => navigate('/')}>
                 <img src='/main-logo.png'/>
-                SWIM TEACH APP
+                BOMBEL ACADEMY
             </div>
             <NavMenu/>
         </div>

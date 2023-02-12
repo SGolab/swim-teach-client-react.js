@@ -1,13 +1,15 @@
 import useIsMobile from "../../useIsMobile";
+import {getImageForTitle} from "../../Utils";
 
 function PathItem({value, setValue, isGrayedOut, isCropped}) {
 
-    const isMobile = useIsMobile();
-
     return (
         <>
-            <div className={'path-item' + (isGrayedOut ? ' grayed-out' : '')} style={{width: ((isMobile && isCropped) ? '50px' : 'auto')}} onClick={setValue}>
-                <span>{value?.title}</span>
+            <div className={'path-item' + (isGrayedOut ? ' grayed-out' : '')}
+                 onClick={setValue}>
+
+                <img src={getImageForTitle(value?.title)}/>
+                {(isGrayedOut) && <span>{value?.title}</span>}
             </div>
         </>
     )

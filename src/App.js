@@ -9,8 +9,10 @@ import LoginView from "./views/login-view/LoginView";
 function AdminView() {
     return (
         <>
-            <AdminHeader/>
-            <AdminViewContainer/>
+            <div className={'default-layout'}>
+                <AdminHeader/>
+                <AdminViewContainer/>
+            </div>
         </>
     )
 }
@@ -25,7 +27,6 @@ function ClientView() {
 }
 
 function App() {
-
     return (
         <BrowserRouter>
             <Routes>

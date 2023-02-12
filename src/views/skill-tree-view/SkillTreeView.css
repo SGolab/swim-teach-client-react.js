@@ -15,8 +15,8 @@
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(3, min-content);
     gap: 10px;
 
     width: 100%;
@@ -32,6 +32,8 @@
     justify-content: center;
     align-items: center;
 
+    aspect-ratio: 1/1;
+
     background-color: var(--tile-background);
     box-shadow: var(--light-shadow);
 
@@ -42,13 +44,8 @@
     transition: .3s;
 }
 
-.skill-tile img {
-    height: 10vw;
-}
-
-.skill-tile:has(span):hover {
-    background-color: var(--tile-background-hover);
-    cursor: pointer;
+.skill-tile > img {
+    height: 50px;
 }
 
 .status-label {
@@ -60,7 +57,7 @@
     justify-content: end;
     align-items: start;
 
-    width: 10vw;
+    width: 60px;
     aspect-ratio: 1/1;
 
     clip-path: polygon(0 0, 100% 100%, 100% 0);
@@ -68,7 +65,7 @@
 }
 
 .status-label > img {
-    height: 5vw;
+    width: 30px;
     margin-right: 3px;
     margin-top: 3px;
 }
@@ -85,6 +82,7 @@
 }
 
 .item-tile {
+    position: relative;
     flex-grow: 1;
 
     width: 100%;
@@ -106,15 +104,8 @@
     }
 }
 
-.item-tile:has(.skill-details):hover {
-    grid-template-columns: 3fr 5fr 2fr;
-}
-
-.item-tile:hover {
-    background-color: var(--tile-background-hover);
-}
-
-.skill-overview {
+.item-overview {
+    position: relative;
     height: 100%;
 
     display: flex;
@@ -128,24 +119,17 @@
     font-weight: bold;
 }
 
-.item-tile:hover > .skill-overview {
-    box-shadow: var(--light-shadow);
-    clip-path: inset(0px -15px 0px 0px);
-
-    text-align: center;
-}
-
-.skill-overview > img {
+.item-overview > img {
     height: 40px;
 }
 
-.skill-overview > span {
+.item-overview > span {
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.skill-details {
+.item-details {
     height: 100%;
 
     display: flex;
@@ -161,11 +145,11 @@
 }
 
 
-.item-tile:not(:has(.skill-details)) .progress-graph {
+.item-tile:not(:has(.item-details)) .progress-graph {
     grid-column: 3/3;
 }
 
-.skill-details > span {
+.item-details > span {
     width: 350px;
     min-width: 350px;
     height: 100px;
@@ -265,6 +249,7 @@
 .path-item {
     display: flex;
     align-items: center;
+    gap: 4px;
 
     padding-left: 10px;
     padding-right: 10px;
@@ -283,6 +268,10 @@
     cursor: pointer;
 
     overflow: hidden;
+}
+
+.path-item > img {
+    height: 20px;
 }
 
 .path-item > span {
@@ -312,4 +301,93 @@
 
 .path-item.grayed-out > img {
     height: 65%;
+}
+
+.info-button {
+    z-index: 5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    transform-style: preserve-3d;
+
+    cursor: pointer;
+}
+
+.info-button > img {
+    width: 20px;
+    aspect-ratio: 1/1;
+}
+
+.info-button:hover {
+    transform: scale(1.2);
+}
+
+.info-modal {
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgb(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+
+    pointer-events: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.info-modal-text {
+    margin: 20px;
+    margin-right: 40px;
+
+    font-size: 2rem;
+    text-align: justify;
+    text-justify: inter-word;
+    color: white;
+}
+
+.exit-btn {
+    z-index: 5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    pointer-events: auto;
+}
+
+.exit-btn:hover {
+    transform: scale(1.2);
+}
+
+.exit-btn > img {
+    width: 30px;
+    aspect-ratio: 1/1;
+    filter: invert();
+}
+
+@media (max-width: 600px) {
+    .skills-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .skill-tile > img {
+        height: 10vw;
+    }
+
+    .status-label {
+        width: 10vw;
+    }
+
+    .status-label img {
+        width: 4.5vw;
+    }
+
+    .info-modal-text {
+        font-size: 4vw;
+    }
 }

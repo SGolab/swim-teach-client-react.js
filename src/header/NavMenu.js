@@ -1,5 +1,4 @@
 import {NavLink, useNavigate} from "react-router-dom";
-import {useMediaQuery} from "react-responsive";
 import useIsMobile from "../useIsMobile";
 import {useState} from "react";
 

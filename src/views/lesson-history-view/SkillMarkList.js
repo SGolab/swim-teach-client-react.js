@@ -1,9 +1,11 @@
 import SkillMarkItem from "./SkillMarkItem";
+import styles from './LessonHistoryView.module.css'
 
-function SkillMarkList({skillMarks}) {
+function SkillMarkList({skillMarks, setSelectedSkill}) {
     return (
-        <div className='skillmark-list'>
-            {skillMarks.map(sm => <SkillMarkItem skillMark={sm}/>)}
+        <div className={styles.skillmarkList}>
+            <div className={styles.skillsAcquiredText}>SKILLS ACQUIRED</div>
+            {skillMarks.map(sm => <SkillMarkItem skillMark={sm} setSelectedSkill={setSelectedSkill}/>)}
         </div>
     );
 }

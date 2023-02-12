@@ -1,4 +1,3 @@
-import LessonHistoryTableRowItem from "../lesson-history-view/LessonHistoryTableRowItem";
 import {useNavigate} from "react-router-dom";
 
 function AdminTableRow({swimmer}) {
@@ -19,8 +18,8 @@ function AdminTableRow({swimmer}) {
 
     return (
         <div className='admin-table-row'>
-            <LessonHistoryTableRowItem text={swimmer.id}/>
-            <LessonHistoryTableRowItem text={swimmer.firstName + ' ' + swimmer.lastName}/>
+            {/*<LessonHistoryTableRowItem text={swimmer.id}/>*/}
+            {/*<LessonHistoryTableRowItem text={swimmer.firstName + ' ' + swimmer.lastName}/>*/}
             <div className='admin-table-options-container'>
                 <div className={'admin-table-options-item'} onClick={handleSeeLessonHistory}>SEE LESSON HISTORY</div>
                 <div className={'admin-table-options-item'} onClick={handleSeeSkillTree}>SEE SKILLS</div>

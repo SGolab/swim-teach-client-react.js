@@ -16,7 +16,7 @@ function LatestLesson({lesson}) {
 
             <div className={styles.latestLessonInfoContainer}>
                 <span>{lesson?.location}</span>
-                <span>{'\t' + lesson?.dateTime}</span>
+                <span>{lesson?.date + ' ' + lesson?.time}</span>
             </div>
 
         </div>

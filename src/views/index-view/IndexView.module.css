@@ -60,7 +60,7 @@
 .navBtn {
     height: 30px;
 
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: var(--btn-shadow);
     outline: solid black 1px;
     border-radius: 5px;
 

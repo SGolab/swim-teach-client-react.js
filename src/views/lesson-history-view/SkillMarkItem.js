@@ -1,15 +1,21 @@
-import {NavLink} from "react-router-dom";
 import {getColorForStatus, getImageForStatus} from "../../Utils";
+import styles from './LessonHistoryView.module.css'
 
-function SkillMarkItem({skillMark}) {
+
+function SkillMarkItem({skillMark, setSelectedSkill}) {
+
+    const handleClick = function (e) {
+        setSelectedSkill(skillMark)
+        e.stopPropagation()
+    }
 
     return (
-        <NavLink to={`/skillTree/${skillMark.skillDetailsId}`} className='skillmark-item'>
-            <div className='skillmark-status-label' style={{backgroundColor: getColorForStatus(skillMark.skillStatus)}}>
+        <div className={styles.skillmarkItem} onClick={handleClick}>
+            <div className={styles.skillmarkStatusLabel} style={{backgroundColor: getColorForStatus(skillMark.skillStatus)}}>
                 <img src={getImageForStatus(skillMark.skillStatus)} alt="img"/>
             </div>
             <span>{skillMark.skillDetailsTitle}</span>
-        </NavLink>
+        </div>
     )
 }
 

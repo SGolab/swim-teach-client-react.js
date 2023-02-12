@@ -1,6 +1,6 @@
-import './LessonHistoryView.css'
 import LessonHistoryTable from "./LessonHistoryTable";
 import useFetch from "../../useFetch";
+import styles from './LessonHistoryView.module.css'
 
 function LessonHistoryView() {
 
@@ -8,8 +8,15 @@ function LessonHistoryView() {
 
     return (
         <div className="view">
-            <div className={'lesson-history-table-container'}>
-                {data ? <LessonHistoryTable lessons={data?.lessons}/> : <h1>Loading...</h1>}
+            <div className={styles.lessonHistoryTableContainer}>
+                <div className={styles.lessonHistoryTableTitle}>
+                    LESSONS
+                </div>
+                {data ?
+                    (data.lessons ? <LessonHistoryTable lessons={data.lessons}/> : <h1>JSON MALFORMED</h1>)
+                    :
+                    <h1>Loading...</h1>
+                }
             </div>
         </div>
     )

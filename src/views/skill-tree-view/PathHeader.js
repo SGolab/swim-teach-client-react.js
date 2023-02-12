@@ -27,7 +27,7 @@ function PathHeader({stage, setStage, subject, setSubject, skill, setSkill}) {
                 <div className='path-item empty' onClick={handleClickEmpty}><span> > </span></div>
                 {stage && <PathItem value={stage} setValue={handleClickStage} isGrayedOut={!subject} isCropped={subject}/>}
                 {subject && <PathItem value={subject} setValue={handleClickSubject} isGrayedOut={!skill} isCropped={skill}/>}
-                {skill && <PathItem value={skill} isGrayedOut={true} isCropped={true}/>}
+                {!isMobile && skill && <PathItem value={skill} isGrayedOut={true} isCropped={true}/>}
                 {skill?.status && <PathItemStatus status={skill.status}/>}
             </div>
 

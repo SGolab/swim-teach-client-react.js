@@ -52,23 +52,23 @@ const imageTitleMap = {
     'STROKES ADVANCED': '/star3.png',
     'EXTRAS': '/extra.png',
 
-    'LEG MOVEMENT': 'leg-movement.png',
-    'ARM MOVEMENT': 'arm-movement.png',
-    'DIVING': 'diving.png',
+    'LEG MOVEMENT': '/leg-movement.png',
+    'ARM MOVEMENT': '/arm-movement.png',
+    'DIVING': '/diving.png',
 
     'BACKSTROKE BASICS': '/body-part.png',
     'BACKSTROKE ADVANCED': '/body-part.png',
 
-    'FREESTYLE BASICS': 'freestyle.png',
-    'FREESTYLE ADVANCED': 'freestyle.png',
+    'FREESTYLE BASICS': '/freestyle.png',
+    'FREESTYLE ADVANCED': '/freestyle.png',
 
-    'BREASTSTROKE BASICS': 'frog.png',
-    'BREASTSTROKE ADVANCED': 'frog.png',
+    'BREASTSTROKE BASICS': '/frog.png',
+    'BREASTSTROKE ADVANCED': '/frog.png',
 
-    'BUTTERFLY BASICS': 'butterfly.png',
-    'BUTTERFLY ADVANCED': 'butterfly.png',
+    'BUTTERFLY BASICS': '/butterfly.png',
+    'BUTTERFLY ADVANCED': '/butterfly.png',
 
-    'JUMPS': 'jumps.png'
+    'JUMPS': '/jumps.png'
 
 
 }
@@ -92,4 +92,11 @@ export function getColorForStatus(status) {
         default:
             return ''
     }
+}
+
+const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+export function getWeekday(dateString) {
+    const date = new Date(dateString)
+    return weekday[date.getDay()]
 }

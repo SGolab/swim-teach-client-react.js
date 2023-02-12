@@ -5,6 +5,12 @@ import ProgressGraph from "./ProgressGraph";
 function ItemTile({item, setItem}) {
 
     const [progressPercentage, setProgressPercentage] = useState()
+    const [isInfo, setIsInfo] = useState(false);
+
+    const handleClickInfoBtn = function (e) {
+        setIsInfo(prev => !prev)
+        e.stopPropagation()
+    }
 
     useEffect(() => {
         setProgressPercentage(computeProgressPercentage(item))
@@ -12,12 +18,36 @@ function ItemTile({item, setItem}) {
 
     return (
         <div className='item-tile' onClick={() => setItem(item)}>
-            <div className='skill-overview'>
+            <div className={'item-overview'}>
                 <img src={item.status ? getImageForStatus(item.status) : getImageForTitle(item.title)}/>
                 <span>{item.title}</span>
+                {item.description && !isInfo &&
+                    <div className={'info-button'} onClick={handleClickInfoBtn}>
+                        <img src={'/info.png'}/>
+                    </div>}
             </div>
-            {item.description && <div className='skill-details'><span>{item.description}</span></div>}
-            {(item.subjects || item.skills) && <ProgressGraph progressPercentage={progressPercentage}/>}
+
+            {item.description &&
+                <div className='item-details'>
+                    <span>{item.description}</span>
+                </div>
+            }
+
+            {(item.subjects || item.skills) &&
+                <ProgressGraph progressPercentage={progressPercentage}/>
+            }
+
+            {isInfo &&
+                <div className={'info-modal'}>
+                    <div className={'info-modal-text'}>
+                        {item.description && item.description}
+                    </div>
+
+                    <div className={'exit-btn'} onClick={handleClickInfoBtn}>
+                        <img src={'/exit.png'}/>
+                    </div>
+                </div>
+            }
         </div>
     )
 }
