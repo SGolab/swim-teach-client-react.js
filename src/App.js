@@ -1,10 +1,10 @@
 import './App.css';
 import Header from "./header/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ViewContainer from "./views/ViewContainer";
+import ViewContainer from "./views/client-views/ViewContainer";
 import AdminHeader from "./header/AdminHeader";
-import AdminViewContainer from "./views/AdminViewContainer";
-import LoginView from "./views/login-view/LoginView";
+import AdminViewContainer from "./views/admin-views/AdminViewContainer";
+import LoginView from "./views/client-views/login-view/LoginView";
 
 function AdminView() {
     return (

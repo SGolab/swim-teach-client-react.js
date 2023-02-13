@@ -1,0 +1,24 @@
+.contentContainer {
+    width: 90%;
+    height: 90%;
+
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 10px;
+
+    justify-items: center;
+
+    background-color: var(--tile-background);
+}
+
+.item {
+    width: 80%;
+}
+
+input {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+}

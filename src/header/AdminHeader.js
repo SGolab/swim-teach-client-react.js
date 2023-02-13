@@ -1,6 +1,6 @@
 import './Header.css'
-import NavMenu from "./NavMenu";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import AdminNavMenu from "./AdminNavMenu";
 
 function AdminHeader() {
 
@@ -17,11 +17,11 @@ function AdminHeader() {
 
     return (
         <div className='header'>
-            <div className='title-container' onClick={() => navigate('/')}>
+            <div className='title-container' onClick={() => navigate('/admin')}>
                 <img src='/main-logo.png'/>
                 BOMBEL ACADEMY
             </div>
-            <NavMenu/>
+            <AdminNavMenu/>
         </div>
     )
 }
