@@ -4,15 +4,61 @@
 
     display: grid;
     grid-auto-rows: min-content;
-    gap: 10px;
+    gap: 20px;
 
     justify-items: center;
 
     background-color: var(--tile-background);
 }
 
+.item:first-of-type {
+    margin-top: 20px;
+}
+
 .item {
     width: 80%;
+    max-width: 400px;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 5fr;
+
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 5px;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+}
+
+.item img {
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+}
+
+.skillList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    overflow: hidden;
+}
+
+.skillItem {
+    outline: solid black 1px;
+    outline-offset: -1px;
+
+    max-width: 200px;
+
+    display: flex;
+    justify-content: start;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 input {
@@ -21,4 +67,8 @@ input {
 
 select {
     width: 100%;
+}
+
+.customDatepicker input {
+    display: none;
 }
