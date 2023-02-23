@@ -16,7 +16,7 @@ function CurrentHomework({homeworkItem}) {
         <div className={styles.currentHomeworkContainer}>
 
             <div className={styles.titleContainer} onClick={handleFullDetails}>
-                <img src={'write.png'}/>
+                <img src={'/write.png'}/>
                 CURRENT HOMEWORK
             </div>
 
@@ -32,7 +32,7 @@ function CurrentHomework({homeworkItem}) {
                     )}
                 {homeworkItem?.customSkills &&
                     <div className={styles.skillsGridItem}>
-                        <img src='/public/custom.png'/>
+                        <img src='/custom.png'/>
                     </div>
                 }
             </div>

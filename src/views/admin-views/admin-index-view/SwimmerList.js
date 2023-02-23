@@ -32,6 +32,11 @@ function SwimmerListRow({swimmer}) {
         navigate(`swimmers/${swimmer.id}/skillTree`)
     }
 
+    const lessonsClicked = function (e) {
+        e.stopPropagation();
+        navigate(`swimmers/${swimmer.id}/lessonHistory`)
+    }
+
     return (
         <div className={styles.swimmerListRow} onClick={switchIsOpened}>
             <div className={styles.swimmerListRowItem}>{swimmer.firstName + ' ' + swimmer.lastName}</div>
@@ -45,6 +50,7 @@ function SwimmerListRow({swimmer}) {
                     <div className={styles.optionsText}>OPTIONS</div>
                     <div className={styles.optionsList}>
                         <div className={styles.optionBtn} onClick={createLessonClicked}>CREATE LESSON</div>
+                        <div className={styles.optionBtn} onClick={lessonsClicked}>LESSONS</div>
                         <div className={styles.optionBtn} onClick={skillsClicked}>SKILLS</div>
                     </div>
                 </div>

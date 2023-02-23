@@ -1,14 +1,14 @@
 import styles from "./SkillSelector.module.css"
 import {useState} from "react";
-import {getColorForStatus, getImageForStatus, getImageForTitle} from "../../../Utils";
+import {getColorForStatus, getImageForStatus, getImageForTitle, StatusEnum} from "../../../Utils";
 
 const boxShadowInset = 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset'
 
-function SkillSelector({skillTree, uploadedSkills, uploadSelectedSkills, handleClose}) {
+function SkillSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleClose}) {
 
-    const [selectedStage, setSelectedStage] = useState()
+    const [selectedStage, setSelectedStage] = useState(skillTree.stages[0])
     const [selectedSubject, setSelectedSubject] = useState()
-    const [selectedSkills, setSelectedSkills] = useState([...uploadedSkills])
+    const [skillMarks, setSkillMarks] = useState([...uploadedSkillMarks])
 
     const handleSelectStage = function (stage) {
         setSelectedStage(stage)
@@ -16,24 +16,46 @@ function SkillSelector({skillTree, uploadedSkills, uploadSelectedSkills, handleC
     }
 
     const handleReset = function () {
-        setSelectedStage(null)
         setSelectedSubject(null)
-        setSelectedSkills([])
+        setSkillMarks([])
     }
 
-    const addSkill = function (skill) {
-        if (selectedSkills.includes(skill)) {
-            const newArray = [...selectedSkills]
+    const addSkillMark = function (skill, status) {
 
-            const index = newArray.indexOf(skill);
-            if (index > -1) { // only splice array when item is found
-                newArray.splice(index, 1); // 2nd parameter means remove one item only
+        const foundSkillMark = skillMarks.find(sm => sm.skillDetailsId === skill.detailsId)
+
+        if (foundSkillMark) {
+
+            if (foundSkillMark.skillStatus === status) { //remove skillMark
+                removeSkillMark(foundSkillMark)
+            } else { //change status of skillMark
+                foundSkillMark.skillStatus = status;
+                setSkillMarks(prev => [...prev]) //force rerender
             }
 
-            setSelectedSkills(newArray)
         } else {
-            setSelectedSkills(prev => [...prev, skill])
+
+            const sm = {
+                skillDetailsId: skill.detailsId,
+                skillDetailsTitle: skill.title,
+                skillStatus: status,
+                skillPrevStatus: skill.status
+            }
+
+            setSkillMarks(prev => [...prev, sm])
         }
+    }
+
+    const removeSkillMark = function (skillMark) {
+
+        const newArray = [...skillMarks]
+
+        const index = newArray.indexOf(skillMark);
+        if (index > -1) { // only splice array when item is found
+            newArray.splice(index, 1); // 2nd parameter means remove one item only
+        }
+
+        setSkillMarks(newArray)
     }
 
     return (
@@ -49,7 +71,7 @@ function SkillSelector({skillTree, uploadedSkills, uploadSelectedSkills, handleC
                         <div className={styles.item}
                              onClick={() => handleSelectStage(stage)}
                              style={{boxShadow: (stage === selectedStage ? boxShadowInset : '')}}>
-                            <img src={getImageForTitle(stage.title)}/>
+                            <img src={getImageForTitle(stage.title)} alt={''}/>
                         </div>)}
                 </div>
 
@@ -64,64 +86,71 @@ function SkillSelector({skillTree, uploadedSkills, uploadSelectedSkills, handleC
                     </div>
                 }
 
-                {selectedSubject &&
-                    <div className={styles.skillSelect}>
-                        {selectedSubject.skills?.map(skill =>
-                            <div className={styles.skillItem}
-                                 style={{boxShadow: (selectedSkills.includes(skill) ? boxShadowInset : '')}}>
+                <div className={styles.skillSelect}>
+                    {!selectedSubject && <div className={styles.noSubjectSelectedText}>NO SUBJECT SELECTED</div>}
+                    {selectedSubject &&
+                        selectedSubject.skills?.map(skill =>
+                            <div className={styles.skillItem}>
 
                                 <span>{skill.title}</span>
 
-                                <div className={styles.imgContainer}
-                                     style={{
-                                         boxShadow: (skill.status === 'NOT_TRAINED' ? boxShadowInset : ''),
-                                         backgroundColor: getColorForStatus('NOT_TRAINED')
-                                     }}
-                                     onClick={() => addSkill(skill)}
-                                >
-                                    <img src={getImageForStatus('NOT_TRAINED')} alt={''}/>
-                                </div>
+                                {Object.keys(StatusEnum).map(status => {
+                                    return (
+                                        <div className={styles.imgContainer}
+                                             style={{
+                                                 boxShadow: (skill.status === status ? boxShadowInset : ''),
+                                                 outline: (skillMarks.find(sm => sm.skillDetailsId === skill.detailsId)?.skillStatus === status && 'solid black 2px'),
+                                                 backgroundColor: getColorForStatus(status)
+                                             }}
+                                             onClick={() => {
+                                                 addSkillMark(skill, status)
+                                             }}
+                                        >
+                                            <img src={getImageForStatus(status)} alt={''}/>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
+                </div>
 
-                                <div className={styles.imgContainer}
-                                     style={{
-                                         boxShadow: (skill.status === 'TRAINED' ? boxShadowInset : ''),
-                                         backgroundColor: getColorForStatus('TRAINED')
-                                     }}
-                                     onClick={() => addSkill(skill)}
-                                >
-                                    <img src={getImageForStatus('TRAINED')} alt={''}/>
-                                </div>
+                <div className={styles.skillMarksContainer}>
+                    {skillMarks.length === 0 && <div className={styles.noSkillMarksText}>NO SKILL MARKS</div>}
+                    {skillMarks.map(sm =>
+                        <div className={styles.skillMarkItem} style={{backgroundColor: (Object.keys(StatusEnum).indexOf(sm.skillStatus) < Object.keys(StatusEnum).indexOf(sm.skillPrevStatus) ? 'rgb(238, 210, 2)' : '')}}>
+                            {sm.skillDetailsTitle}
+                            <div className={styles.statusImgContainer}
+                                 style={{backgroundColor: getColorForStatus(sm.skillPrevStatus) === 'transparent' ? 'white' : getColorForStatus(sm.skillPrevStatus)}}>
+                                <img src={getImageForStatus(sm.skillPrevStatus)} alt={''}/>
+                            </div>
 
-                                <div className={styles.imgContainer}
-                                     style={{
-                                         boxShadow: (skill.status === 'ACQUIRED' ? boxShadowInset : ''),
-                                         backgroundColor: getColorForStatus('ACQUIRED')
-                                     }}
-                                     onClick={() => addSkill(skill)}
-                                >
-                                    <img src={getImageForStatus('ACQUIRED')} alt={''}/>
-                                </div>
-                            </div>)}
-                    </div>
-                }
+                            <img className={styles.arrowImg} src={'/straight-right-arrow.png'} alt={''}/>
 
-                {
-                    <div className={styles.selectedSkills}>
-                        {selectedSkills.map(skill =>
-                            <div className={styles.selectedSkillItem}>
-                                <div>{skill.title}</div>
-                            </div>)
-                        }
-                    </div>
-                }
+                            <div className={styles.statusImgContainer}
+                                 style={{backgroundColor: getColorForStatus(sm.skillStatus)}}>
+                                <img src={getImageForStatus(sm.skillStatus)} alt={''}/>
+                            </div>
 
-                <button onClick={handleReset}>RESET</button>
-                <button onClick={() => {
-                    uploadSelectedSkills(selectedSkills);
-                    handleClose()
-                }}>
-                    CONFIRM
-                </button>
+                            <img src={'/exit.png'} onClick={() => removeSkillMark(sm)} alt={''}/>
+
+                        </div>
+                    )}
+                </div>
+
+                <div className={styles.btnContainer}>
+                    <button onClick={handleReset}>
+                        <img src={'/reset.png'}/>
+                    </button>
+
+                    <div className={styles.selectedText}>{'SELECTED: ' + skillMarks.length}</div>
+
+                    <button onClick={() => {
+                        uploadSkillMarks(skillMarks);
+                        handleClose()
+                    }}>
+                        <img src={'/upload.png'}/>
+                    </button>
+                </div>
 
             </div>
         </>

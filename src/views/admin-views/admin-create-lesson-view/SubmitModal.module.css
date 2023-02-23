@@ -1,0 +1,56 @@
+.submitModal {
+    position: absolute;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 80%);
+    backdrop-filter: blur(2px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exitBtn {
+    align-self: end;
+    margin-right: 10px;
+
+    filter: invert();
+}
+
+.exitBtn img {
+    height: 2rem;
+}
+
+.contentContainer {
+    background-color: white;
+
+    border-radius: 10px;
+
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 1.5rem;
+}
+
+.contentContainer > * {
+    margin: 10px;
+}
+
+.skillMarkListContainer {
+    max-height: 40vh;
+    overflow: scroll;
+}
+
+.btnContainer {
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    gap: 10px;
+}

@@ -16,6 +16,18 @@ export async function fetchUserDetails() {
         .then(response => response.json())
 }
 
+export function fetchPostLesson(swimmerId, lessonDto) {
+
+    const headers = getHeaders();
+    headers.set('Content-Type', 'application/json')
+
+    return fetch(API_PATH + `/swimmers/${swimmerId}/createLesson`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(lessonDto)
+    })
+}
+
 export function fetchPostLogin(loginData) {
 
     const headers = new Headers({
@@ -69,8 +81,6 @@ const imageTitleMap = {
     'BUTTERFLY ADVANCED': '/butterfly.png',
 
     'JUMPS': '/jumps.png'
-
-
 }
 
 export function getImageForTitle(title) {
@@ -100,3 +110,9 @@ export function getWeekday(dateString) {
     const date = new Date(dateString)
     return weekday[date.getDay()]
 }
+
+export const StatusEnum = {
+    NOT_TRAINED: 'NOT_TRAINED',
+    TRAINED: 'TRAINED',
+    ACQUIRED: 'ACQUIRED'
+};

@@ -5,10 +5,15 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SkillSelector from "./SkillSelector";
 import useFetch from "../../../hooks/useFetch";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import LocationSelector from "./LocationSelector";
+import {fetchPostLesson, StatusEnum} from "../../../Utils";
+import SubmitModal from "./SubmitModal";
+import SkillMarkList from "./SkillMarkList";
 
 function AdminCreateLessonView() {
+
+    const navigate = useNavigate();
 
     const {swimmerId} = useParams();
 
@@ -18,7 +23,7 @@ function AdminCreateLessonView() {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
     const [location, setLocation] = useState('initial location');
-    const [selectedSkills, setSelectedSkills] = useState([]);
+    const [skillMarks, setSkillMarks] = useState([]);
 
     const datePicker = useRef();
     const timePicker = useRef();
@@ -26,10 +31,24 @@ function AdminCreateLessonView() {
     const [isSkillSelectorOpened, setIsSkillSelectorOpened] = useState(false);
     const [isLocationSelectorOpened, setIsLocationSelectorOpened] = useState(false);
 
+    const [isSubmitViewOpen, setIsSubmitViewOpen] = useState(false);
+
     const handleSubmit = function () {
-        console.log(date)
-        console.log(time)
-        console.log(location)
+        const lessonDto = {
+            date: date.toLocaleDateString('pl', {year: 'numeric', month: '2-digit', day: '2-digit'}),
+            time: time.toLocaleString("pl", {hour: '2-digit', hour12: false, minute: '2-digit'}),
+            location: location,
+            skillMarks: skillMarks
+        }
+
+        fetchPostLesson(swimmerId, lessonDto)
+            .then(response => {
+
+                if (response.ok) {
+                    navigate(`/admin/swimmers/${swimmerId}/lessonHistory`)
+                }
+
+            })
     }
 
     return (
@@ -62,17 +81,22 @@ function AdminCreateLessonView() {
 
                     {progressTree &&
                         <button onClick={() => setIsSkillSelectorOpened(prev => !prev)}>
-                            <img src={'/self-control.png'}/>
+                            <img src={'/self-control.png'} alt={''}/>
                         </button>
                     }
 
-                    <div className={styles.skillList}>
-                        {selectedSkills.map(skill => <div className={styles.skillItem}>{skill.title}</div>)}
+                    <div>
+                        <div>{'Skills selected: ' + skillMarks.length}</div>
+                        <small>{'Alerts: ' + skillMarks.filter(sm => (Object.keys(StatusEnum).indexOf(sm.skillStatus) < Object.keys(StatusEnum).indexOf(sm.skillPrevStatus))).length}</small>
+                    </div>
+
+                    <div className={styles.skillMarkListItemContainer}>
+                        <SkillMarkList skillMarks={skillMarks}/>
                     </div>
 
                 </div>
 
-                <button onClick={handleSubmit}>SUBMIT</button>
+                <button onClick={() => setIsSubmitViewOpen(true)}>SUBMIT</button>
             </div>
 
             <div className={styles.customDatepicker}>
@@ -111,10 +135,18 @@ function AdminCreateLessonView() {
             {isSkillSelectorOpened &&
                 <SkillSelector
                     skillTree={progressTree}
-                    uploadedSkills={selectedSkills}
-                    uploadSelectedSkills={setSelectedSkills}
+                    uploadedSkillMarks={skillMarks}
+                    uploadSkillMarks={setSkillMarks}
                     handleClose={() => setIsSkillSelectorOpened(false)}/>
             }
+
+            {isSubmitViewOpen &&
+                <SubmitModal swimmerName={progressTree.swimmerName}
+                    date={date} time={time} location={location} skillMarks={skillMarks}
+                             handleSubmit={handleSubmit}
+                             handleClose={() => setIsSubmitViewOpen(false)}/>
+            }
+
         </div>
     )
 }
