@@ -1,10 +1,11 @@
-import styles from "./SkillSelector.module.css"
+import styles from "./SkillMarkSelector.module.css"
 import {useState} from "react";
 import {getColorForStatus, getImageForStatus, getImageForTitle, StatusEnum} from "../../../Utils";
+import SkillMarkList from "../skill-mark-list/SkillMarkList";
 
 const boxShadowInset = 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset'
 
-function SkillSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleClose}) {
+function SkillMarkSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleClose}) {
 
     const [selectedStage, setSelectedStage] = useState(skillTree.stages[0])
     const [selectedSubject, setSelectedSubject] = useState()
@@ -60,7 +61,7 @@ function SkillSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleC
 
     return (
         <>
-            <div className={styles.skillSelector}>
+            <div className={styles.skillMarkSelector}>
 
                 <div className={styles.exitBtn} onClick={handleClose}>
                     <img src={'/exit.png'}/>
@@ -116,25 +117,7 @@ function SkillSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleC
 
                 <div className={styles.skillMarksContainer}>
                     {skillMarks.length === 0 && <div className={styles.noSkillMarksText}>NO SKILL MARKS</div>}
-                    {skillMarks.map(sm =>
-                        <div className={styles.skillMarkItem} style={{backgroundColor: (Object.keys(StatusEnum).indexOf(sm.skillStatus) < Object.keys(StatusEnum).indexOf(sm.skillPrevStatus) ? 'rgb(238, 210, 2)' : '')}}>
-                            {sm.skillDetailsTitle}
-                            <div className={styles.statusImgContainer}
-                                 style={{backgroundColor: getColorForStatus(sm.skillPrevStatus) === 'transparent' ? 'white' : getColorForStatus(sm.skillPrevStatus)}}>
-                                <img src={getImageForStatus(sm.skillPrevStatus)} alt={''}/>
-                            </div>
-
-                            <img className={styles.arrowImg} src={'/straight-right-arrow.png'} alt={''}/>
-
-                            <div className={styles.statusImgContainer}
-                                 style={{backgroundColor: getColorForStatus(sm.skillStatus)}}>
-                                <img src={getImageForStatus(sm.skillStatus)} alt={''}/>
-                            </div>
-
-                            <img src={'/exit.png'} onClick={() => removeSkillMark(sm)} alt={''}/>
-
-                        </div>
-                    )}
+                    <SkillMarkList skillMarks={skillMarks} handleRemoveSkillMark={removeSkillMark}/>
                 </div>
 
                 <div className={styles.btnContainer}>
@@ -157,4 +140,4 @@ function SkillSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, handleC
     )
 }
 
-export default SkillSelector;
+export default SkillMarkSelector;

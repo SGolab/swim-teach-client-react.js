@@ -1,5 +1,5 @@
 import styles from "./SubmitModal.module.css";
-import SkillMarkList from "./SkillMarkList";
+import SkillMarkList from "../skill-mark-list/SkillMarkList";
 
 function SubmitModal({swimmerName, date, time, location, skillMarks, handleSubmit, handleClose}) {
 

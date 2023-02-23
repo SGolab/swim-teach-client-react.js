@@ -107,7 +107,8 @@ export function getColorForStatus(status) {
 const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export function getWeekday(dateString) {
-    const date = new Date(dateString)
+    const [year, month, day] = dateString.split('.').map(x => parseInt(x));
+    const date = new Date(year, month, day);
     return weekday[date.getDay()]
 }
 

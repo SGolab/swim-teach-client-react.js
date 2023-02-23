@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
-import LessonHistoryTable from "../../client-views/lesson-history-view/LessonHistoryTable";
+import LessonHistoryTable from "../../shared-components/lesson-history-table/LessonHistoryTable";
+import styles from "./AdminLessonHistoryView.module.css"
 
 function AdminLessonHistoryView() {
 
@@ -10,7 +11,12 @@ function AdminLessonHistoryView() {
 
     return (
         <div className={'view'}>
-            {lessonHistory ? <LessonHistoryTable lessons={lessonHistory.lessons}/> : <h1>Loading...</h1>}
+            <div className={styles.lessonHistoryTableContainer}>
+            {lessonHistory ?
+                <LessonHistoryTable swimmerName={lessonHistory.swimmerName} lessons={lessonHistory.lessons}/>
+                :
+                <h1>Loading...</h1>}
+            </div>
         </div>
     )
 }

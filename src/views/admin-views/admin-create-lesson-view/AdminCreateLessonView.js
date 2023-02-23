@@ -3,13 +3,13 @@ import {useRef, useState} from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import SkillSelector from "./SkillSelector";
+import SkillMarkSelector from "../../shared-components/skill-mark-selector/SkillMarkSelector";
 import useFetch from "../../../hooks/useFetch";
 import {useNavigate, useParams} from "react-router-dom";
 import LocationSelector from "./LocationSelector";
-import {fetchPostLesson, StatusEnum} from "../../../Utils";
-import SubmitModal from "./SubmitModal";
-import SkillMarkList from "./SkillMarkList";
+import {fetchPostLesson} from "../../../Utils";
+import SubmitModal from "../../shared-components/skill-mark-selector/SubmitModal";
+import SkillMarkList, {isWarning} from "../../shared-components/skill-mark-list/SkillMarkList";
 
 function AdminCreateLessonView() {
 
@@ -87,7 +87,7 @@ function AdminCreateLessonView() {
 
                     <div>
                         <div>{'Skills selected: ' + skillMarks.length}</div>
-                        <small>{'Alerts: ' + skillMarks.filter(sm => (Object.keys(StatusEnum).indexOf(sm.skillStatus) < Object.keys(StatusEnum).indexOf(sm.skillPrevStatus))).length}</small>
+                        <small>{'Alerts: ' + skillMarks.filter(sm => isWarning(sm)).length}</small>
                     </div>
 
                     <div className={styles.skillMarkListItemContainer}>
@@ -133,7 +133,7 @@ function AdminCreateLessonView() {
             }
 
             {isSkillSelectorOpened &&
-                <SkillSelector
+                <SkillMarkSelector
                     skillTree={progressTree}
                     uploadedSkillMarks={skillMarks}
                     uploadSkillMarks={setSkillMarks}

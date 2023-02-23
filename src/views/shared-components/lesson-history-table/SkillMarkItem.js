@@ -1,5 +1,5 @@
 import {getColorForStatus, getImageForStatus} from "../../../Utils";
-import styles from './LessonHistoryView.module.css'
+import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
 
 
 function SkillMarkItem({skillMark, setSelectedSkill}) {

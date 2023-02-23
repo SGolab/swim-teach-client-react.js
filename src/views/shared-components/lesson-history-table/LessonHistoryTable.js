@@ -1,8 +1,8 @@
 import LessonHistoryTableRow from "./LessonHistoryTableRow";
-import styles from './LessonHistoryView.module.css'
+import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
 import {useState} from "react";
 
-function LessonHistoryTable({lessons}) {
+function LessonHistoryTable({swimmerName, lessons}) {
 
     const ranges = initRanges(lessons.length, 5)
 
@@ -31,6 +31,10 @@ function LessonHistoryTable({lessons}) {
     return (
         lessons.length ?
             <div className={styles.lessonHistoryTable}>
+
+                <div className={styles.lessonHistoryTableTitle}>
+                    {swimmerName ? `${swimmerName}'s Lessons` : 'Lessons'}
+                </div>
 
                 {lessons.slice(ranges[rangeIndex].start, ranges[rangeIndex].end).map((lesson, index) => {
                     return <LessonHistoryTableRow lesson={lesson} isFirst={lesson === lessons[0]}/>

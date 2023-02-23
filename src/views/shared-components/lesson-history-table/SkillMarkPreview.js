@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import styles from './LessonHistoryView.module.css'
+import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
 
 
 function SkillMarkPreview({skill}) {
@@ -15,7 +15,7 @@ function SkillMarkPreview({skill}) {
                     allowFullScreen={true}>
                 </iframe>
             </div>
-            <div className={styles.fullDetailsBtn} onClick={() => navigate(`/skillTree/${skill.skillDetailsId}`)}>
+            <div className={styles.fullDetailsBtn} onClick={() => navigate(`skillTree/${skill.skillDetailsId}`)}>
                 SEE FULL DETAILS
             </div>
         </div>

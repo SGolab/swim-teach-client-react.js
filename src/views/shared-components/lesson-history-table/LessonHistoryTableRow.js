@@ -4,7 +4,7 @@ import {getWeekday} from "../../../Utils";
 import {useNavigate} from "react-router-dom";
 import useIsMobile from "../../../hooks/useIsMobile";
 import SkillMarkPreview from "./SkillMarkPreview";
-import styles from './LessonHistoryView.module.css'
+import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
 
 function LessonHistoryTableRow({lesson, isFirst}) {
 
@@ -33,7 +33,7 @@ function LessonHistoryTableRow({lesson, isFirst}) {
             </div>
 
             {lesson.homeworkId &&
-                <div className={styles.homeworkInfo} onClick={() => navigate(`/homework/${lesson.homeworkId}`)}>
+                <div className={styles.homeworkInfo} onClick={() => navigate(`homework/${lesson.homeworkId}`)}>
                     <img src={'/write.png'}/>
                     {!isMobile && <span>Homework</span>}
                 </div>

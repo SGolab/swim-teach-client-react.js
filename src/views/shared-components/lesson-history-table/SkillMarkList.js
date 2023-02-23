@@ -1,5 +1,5 @@
 import SkillMarkItem from "./SkillMarkItem";
-import styles from './LessonHistoryView.module.css'
+import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
 
 function SkillMarkList({skillMarks, setSelectedSkill}) {
     return (
