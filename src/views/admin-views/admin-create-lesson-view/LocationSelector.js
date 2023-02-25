@@ -3,6 +3,7 @@ import styles from './LocationSelector.module.css'
 function LocationSelector({locations, setLocation, handleClose}) {
     return (
         <div className={styles.locationSelector}>
+
             <div className={styles.exitBtn} onClick={handleClose}>
                 <img src={'/exit.png'}/>
             </div>

@@ -1,0 +1,13 @@
+.skillTreePresentationContainer {
+    width: 90%;
+    max-width: 800px;
+    height: 90%;
+    max-height: 800px;
+
+    gap: 5px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+
+    overflow: visible;
+}

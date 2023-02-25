@@ -1,0 +1,53 @@
+.progressGraph {
+    display: grid;
+
+    width: 100%;
+    height: 100%;
+
+    box-shadow: var(--light-shadow);
+}
+
+@media (max-width: 600px){
+    .progressGraph {
+        font-size: 0.8rem;
+    }
+}
+
+.shapeContainer {
+    grid-row: 1/1;
+    grid-column: 1/1;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shapeContainer > span {
+    z-index: 1;
+    color: black;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.progressRing {
+    width: 75%;
+    aspect-ratio: 1/1;
+
+    clip-path: circle(50% at 50% 50%);
+
+    background: conic-gradient(
+            darkred 0%,
+            transparent 0%
+    );
+}
+
+.progressRingInnerCircle {
+    width: 50%;
+    aspect-ratio: 1/1;
+    clip-path: circle(50% at 50% 50%);
+    background-color: white;
+}

@@ -1,6 +1,8 @@
-import {getImageForStatus, getImageForTitle, getLoremIpsum} from "../../../Utils";
+import {getImageForStatus, getImageForTitle, getLoremIpsum, StatusEnum} from "../../../Utils";
 import {useEffect, useState} from "react";
-import ProgressGraph from "./ProgressGraph";
+import ProgressGraph from "../progress-graph/ProgressGraph";
+
+import styles from './SkillTreePresentation.module.css'
 
 function ItemTile({item, setItem}) {
 
@@ -17,12 +19,12 @@ function ItemTile({item, setItem}) {
     }, [item])
 
     return (
-        <div className='item-tile' onClick={() => setItem(item)}>
-            <div className={'item-overview'}>
+        <div className={styles.itemTile} onClick={() => setItem(item)}>
+            <div className={styles.itemOverview}>
                 <img src={item.status ? getImageForStatus(item.status) : getImageForTitle(item.title)}/>
                 <span>{item.title}</span>
                 {item.description && !isInfo &&
-                    <div className={'info-button'} onClick={handleClickInfoBtn}>
+                    <div className={styles.infoButton} onClick={handleClickInfoBtn}>
                         <img src={'/info.png'}/>
                     </div>}
             </div>
@@ -32,12 +34,12 @@ function ItemTile({item, setItem}) {
             }
 
             {isInfo &&
-                <div className={'info-modal'}>
-                    <div className={'info-modal-text'}>
+                <div className={styles.infoModal}>
+                    <div className={styles.infoModalText}>
                         {item.description && item.description}
                     </div>
 
-                    <div className={'exit-btn'} onClick={handleClickInfoBtn}>
+                    <div className={styles.exitBtn} onClick={handleClickInfoBtn}>
                         <img src={'/exit.png'}/>
                     </div>
                 </div>
@@ -62,9 +64,9 @@ function computeProgressPercentage(item) {
 
     skills.forEach(skill => {
         total++;
-        if (skill.status === 'ACQUIRED') {
+        if (skill.status === StatusEnum.ACQUIRED) {
             completed++;
-        } else if (skill.status === 'TRAINED') {
+        } else if (skill.status === StatusEnum.TRAINED) {
             completed += .5
         }
     })

@@ -1,17 +1,23 @@
+import styles from './ProgressGraph.module.css'
+
 function ProgressGraph({progressPercentage}) {
     return (
-        <div className='progress-graph'>
-            <div className='shape-container'>
-                <div className='progress-ring'
+        <div className={styles.progressGraph}>
+
+            <div className={styles.shapeContainer}>
+                <div className={styles.progressRing}
                      style={{background: `conic-gradient(${getColor(progressPercentage / 100)} ${progressPercentage}%, transparent 0%)`}}>
                 </div>
             </div>
-            <div className='shape-container'>
-                <div className='progress-ring-inner-circle'></div>
+
+            <div className={styles.shapeContainer}>
+                <div className={styles.progressRingInnerCircle}></div>
             </div>
-            <div className='shape-container'>
+
+            <div className={styles.shapeContainer}>
                 <span>{progressPercentage}%</span>
             </div>
+
         </div>
     )
 }

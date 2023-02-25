@@ -1,0 +1,52 @@
+.skillPresentation {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+
+    margin: 10px 15px;
+}
+
+.description {
+    text-align: justify;
+    text-justify: newspaper;
+
+    width: 90%;
+    max-width: 600px;
+    max-height: 30vh;
+
+    margin-bottom: 10px;
+
+    overflow-y: scroll;
+}
+
+.videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 90%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    overflow: hidden;
+}
+
+.videoContainer > iframe {
+    width: 100%;
+    height: 100%;
+}

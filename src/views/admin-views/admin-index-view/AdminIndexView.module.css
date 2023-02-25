@@ -77,7 +77,5 @@
 
     font-weight: bold;
 
-    /*outline: solid black 2px;*/
-    /*border-radius: 5px;*/
-    box-shadow: var(--btn-shadow);
+    box-shadow: var(--light-shadow);
 }

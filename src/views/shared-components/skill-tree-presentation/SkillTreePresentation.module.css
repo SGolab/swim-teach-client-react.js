@@ -1,0 +1,246 @@
+.skillTreePresentation {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, min-content) auto;
+    gap: 5px;
+}
+
+.pathHeader {
+    display: flex;
+    align-items: start;
+    overflow: hidden;
+}
+
+.pathItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 35px;
+    min-width: 10px;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    font-weight: bold;
+    white-space: nowrap;
+
+    transform: skew(20deg) translateX(-5px);
+
+    cursor: pointer;
+
+    overflow: hidden;
+}
+
+.pathItem > * {
+    transform: skew(-20deg);
+}
+
+.pathItem > img {
+    height: 20px;
+}
+
+.pathItem > span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pathItem:hover {
+    background-color: var(--tile-background-hover);
+}
+
+.pathItem > img {
+    height: 65%;
+}
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+}
+
+.itemTile {
+    position: relative;
+    flex-grow: 1;
+
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    cursor: pointer;
+}
+
+.itemOverview {
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: bold;
+}
+
+.itemOverview > img {
+    height: 2rem;
+}
+
+.itemOverview > span {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.infoButton {
+    z-index: 5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    transform-style: preserve-3d;
+
+    cursor: pointer;
+}
+
+.infoButton > img {
+    width: 20px;
+    aspect-ratio: 1/1;
+}
+
+.infoButton:hover {
+    transform: scale(1.2);
+}
+
+.infoModal {
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgb(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+
+    pointer-events: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.infoModal-text {
+    margin: 20px;
+    margin-right: 40px;
+
+    text-align: justify;
+    text-justify: inter-word;
+    color: white;
+}
+
+.exitBtn {
+    z-index: 5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    pointer-events: auto;
+}
+
+.exitBtn:hover {
+    transform: scale(1.2);
+}
+
+.exitBtn > img {
+    width: 30px;
+    aspect-ratio: 1/1;
+    filter: invert();
+}
+
+
+.skillsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, min-content);
+    gap: 10px;
+
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.skillTile {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px;
+
+    aspect-ratio: 1/1;
+
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    font-weight: bold;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.skillTile > img {
+    height: 2rem;
+}
+
+.statusLabel {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    aspect-ratio: 1/1;
+
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    background-color: black;
+}
+
+.statusLabel > img {
+    width: 50%;
+    transform: translateX(40%) translateY(-40%);
+}
+
+.skillPresentationContainer {
+
+}
+
+@media (max-width: 600px) {
+    .itemTile {
+        grid-template-columns: 5fr 3fr;
+    }
+
+    .skillsContainer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

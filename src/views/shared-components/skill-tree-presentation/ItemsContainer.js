@@ -1,9 +1,10 @@
 import ItemTile from "./ItemTile";
 
-function ItemsContainer({items, setItem}) {
+import styles from './SkillTreePresentation.module.css'
 
+function ItemsContainer({items, setItem}) {
     return (
-            <div className='items-container'>
+            <div className={styles.itemsContainer}>
                 {items.map(item => <ItemTile key={item.title} item={item} setItem={setItem}/>)}
             </div>
     )
