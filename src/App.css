@@ -28,7 +28,7 @@ body {
 
 .default-layout {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 100vw);
     grid-template-rows: 70px auto;
 
     width: 100%;

@@ -16,8 +16,18 @@ export async function fetchUserDetails() {
         .then(response => response.json())
 }
 
-export function fetchPostLesson(swimmerId, lessonDto) {
+export function fetchPostNewSwimmer(swimmerDto) {
+    const headers = getHeaders();
+    headers.set('Content-Type', 'application/json')
 
+    return fetch(API_PATH + `/swimmers/new`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(swimmerDto)
+    })
+}
+
+export function fetchPostLesson(swimmerId, lessonDto) {
     const headers = getHeaders();
     headers.set('Content-Type', 'application/json')
 

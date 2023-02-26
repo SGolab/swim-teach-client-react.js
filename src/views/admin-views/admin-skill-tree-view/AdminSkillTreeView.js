@@ -15,6 +15,7 @@ function AdminSkillTreeView() {
             <div className={styles.skillTreePresentationContainer}>
                 {progressTree ?
                     <SkillTreePresentation skillDetailsId={skillDetailsId ? skillDetailsId : null}
+                                           swimmerName={progressTree.swimmerName}
                                            stages={progressTree.stages}/>
                     :
                     <h1>Loading...</h1>

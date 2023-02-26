@@ -6,7 +6,7 @@ import PathHeader from "./PathHeader";
 
 import styles from './SkillTreePresentation.module.css'
 
-function SkillTreePresentation({stages, skillDetailsId}) {
+function SkillTreePresentation({stages, swimmerName, skillDetailsId}) {
 
     const [stage, setStage] = useState();
     const [subject, setSubject] = useState();
@@ -55,6 +55,11 @@ function SkillTreePresentation({stages, skillDetailsId}) {
 
     return (
         <div className={styles.skillTreePresentation}>
+
+            <div className={styles.title}>
+                {swimmerName ? `${swimmerName}'s Skills` : 'Skills'}
+            </div>
+
             <PathHeader stage={stage} setStage={setStage}
                         subject={subject} setSubject={setSubject}
                         skill={skill} setSkill={setSkill}/>

@@ -4,7 +4,7 @@ import {getWeekday} from "../../../Utils";
 import {useNavigate} from "react-router-dom";
 import useIsMobile from "../../../hooks/useIsMobile";
 import SkillMarkPreview from "./SkillMarkPreview";
-import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
+import styles from './LessonHistoryTable.module.css'
 
 function LessonHistoryTableRow({lesson, isFirst}) {
 

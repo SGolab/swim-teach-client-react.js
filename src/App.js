@@ -8,12 +8,10 @@ import LoginView from "./views/client-views/login-view/LoginView";
 
 function AdminView() {
     return (
-        <>
-            <div className={'default-layout'}>
-                <AdminHeader/>
-                <AdminViewContainer/>
-            </div>
-        </>
+        <div className={'default-layout'}>
+            <AdminHeader/>
+            <AdminViewContainer/>
+        </div>
     )
 }
 

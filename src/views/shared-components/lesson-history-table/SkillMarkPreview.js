@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
-
+import styles from './LessonHistoryTable.module.css'
 
 function SkillMarkPreview({skill}) {
 

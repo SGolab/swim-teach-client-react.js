@@ -1,5 +1,5 @@
 import LessonHistoryTableRow from "./LessonHistoryTableRow";
-import styles from '../../client-views/lesson-history-view/LessonHistoryView.module.css'
+import styles from './LessonHistoryTable.module.css'
 import {useState} from "react";
 
 function LessonHistoryTable({swimmerName, lessons}) {
@@ -29,37 +29,37 @@ function LessonHistoryTable({swimmerName, lessons}) {
     }
 
     return (
-        lessons.length ?
-            <div className={styles.lessonHistoryTable}>
+        <div className={styles.lessonHistoryTable}>
 
-                <div className={styles.lessonHistoryTableTitle}>
-                    {swimmerName ? `${swimmerName}'s Lessons` : 'Lessons'}
-                </div>
-
-                {lessons.slice(ranges[rangeIndex].start, ranges[rangeIndex].end).map((lesson, index) => {
-                    return <LessonHistoryTableRow lesson={lesson} isFirst={lesson === lessons[0]}/>
-                })}
-
-                <div className={styles.rangeInfoContainer}>
-                    <div className={styles.prevNextBtn} onClick={handlePrevClicked}>PREVIOUS</div>
-                    <div className={styles.rangeInfo}>
-                        {
-                            ranges[rangeIndex].start + 1 === ranges[rangeIndex].end
-                                ?
-                                ranges[rangeIndex].start + 1 + ' / ' + lessons.length
-                                :
-                                ranges[rangeIndex].start + 1 + '-' + ranges[rangeIndex].end + ' / ' + lessons.length
-                        }
-                    </div>
-                    <div className={styles.prevNextBtn} onClick={handleNextClicked}>NEXT</div>
-                </div>
+            <div className={styles.lessonHistoryTableTitle}>
+                {lessons.length ?
+                    swimmerName ? `${swimmerName}'s Lessons` : 'Lessons'
+                    :
+                    'No lessons yet!'
+                }
 
             </div>
-            :
-            <h1>NO LESSONS YET!</h1>
 
+            {lessons.slice(ranges[rangeIndex].start, ranges[rangeIndex].end).map((lesson) => {
+                return <LessonHistoryTableRow lesson={lesson} isFirst={lesson === lessons[0]}/>
+            })}
+
+            <div className={styles.rangeInfoContainer}>
+                <div className={styles.prevNextBtn} onClick={handlePrevClicked}>PREVIOUS</div>
+                <div className={styles.rangeInfo}>
+                    {
+                        ranges[rangeIndex].start + 1 === ranges[rangeIndex].end
+                            ?
+                            ranges[rangeIndex].start + 1 + ' / ' + lessons.length
+                            :
+                            ranges[rangeIndex].start + 1 + '-' + ranges[rangeIndex].end + ' / ' + lessons.length
+                    }
+                </div>
+                <div className={styles.prevNextBtn} onClick={handleNextClicked}>NEXT</div>
+            </div>
+
+        </div>
     )
-
 }
 
 export default LessonHistoryTable;

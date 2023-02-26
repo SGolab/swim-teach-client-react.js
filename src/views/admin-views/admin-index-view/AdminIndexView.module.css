@@ -1,7 +1,33 @@
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
 .swimmersText {
     color: gray;
     font-size: 2rem;
     font-weight: bold;
+}
+
+.createNewSwimmerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: min-content;
+    padding: 5px 10px;
+
+    box-shadow: var(--light-shadow);
+    outline: solid gray 1px;
+    outline-offset: -1px;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
 }
 
 .swimmerList {

@@ -1,21 +1,14 @@
 import useFetch from "../../../hooks/useFetch";
 import styles from './UserDetailsView.module.css'
+import UserDetailsTable from "../../shared-components/user-details-table/UserDetailsTable";
 
 function UserDetailsView() {
 
-    const [data] = useFetch(`/userDetails`)
+    const [userDetails] = useFetch(`/userDetails`)
 
     return (
-        <div className={styles.contentContainer}>
-
-
-            {data && <div className={styles.keyColumn}>
-                {Object.keys(data).map(key => <span>{key}</span>)}
-            </div>}
-
-            {data && <div className={styles.valueColumn}>
-                {Object.values(data).map(value => <span>{value}</span>)}
-            </div>}
+        <div className={'view'}>
+            {userDetails && <UserDetailsTable userDetails={userDetails}/>}
         </div>
     )
 }
