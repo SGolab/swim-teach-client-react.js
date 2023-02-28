@@ -1,20 +1,19 @@
 import {useNavigate} from "react-router-dom";
 import useIsMobile from "../hooks/useIsMobile";
 import {useState} from "react";
+import useLogOut from "../hooks/useLogOut";
 
 function AdminNavMenu() {
+
+    const logout = useLogOut();
+
     const navigate = useNavigate();
+
     const [opened, setOpened] = useState(false)
 
     function handleRedirection(url) {
         setOpened(false)
         navigate(url)
-    }
-
-    function handleLogOut() {
-        localStorage.removeItem('jwtToken')
-        localStorage.removeItem('user')
-        navigate('/login')
     }
 
     return (
@@ -27,7 +26,7 @@ function AdminNavMenu() {
                         <div className='dropdown-item' onClick={() => handleRedirection('userDetails')}>USER DETAILS</div>
                         <div className='dropdown-item'>HELP</div>
                         <div className='dropdown-item'>CONTACT</div>
-                        <div className='dropdown-item' onClick={handleLogOut}>LOG OUT</div>
+                        <div className='dropdown-item' onClick={logout}>LOG OUT</div>
                     </div>
                 }
             </div>

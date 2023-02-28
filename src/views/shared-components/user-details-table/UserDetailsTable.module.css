@@ -1,7 +1,6 @@
 .userDetailsTable {
     width: 90%;
     max-width: 600px;
-    height: 80%;
     max-height: 600px;
 
     background-color: var(--tile-background);
@@ -12,12 +11,17 @@
     grid-template-rows: 1fr;
 }
 
-.keyColumn {
+.column {
     display: flex;
     flex-direction: column;
     gap: 10px;
 
     padding: 10px;
+    padding-bottom: 20px;
+}
+
+.keyColumn {
+    composes: column;
 
     font-weight: bold;
 
@@ -28,15 +32,7 @@
 }
 
 .valueColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    padding: 10px;
+    composes: column;
 
     background-color: var(--tile-background-hover);
-}
-
-.contentContainer span {
-    margin: 10px;
 }

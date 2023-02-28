@@ -5,6 +5,7 @@ import LessonHistoryView from "./lesson-history-view/LessonHistoryView";
 import NotFoundView from "./not-found-view/NotFoundView";
 import HomeworkView from "./homework-view/HomeworkView";
 import UserDetailsView from "./user-details-view/UserDetailsView";
+import ChangePasswordView from "./change-password-view/ChangePasswordView";
 
 function ViewContainer() {
 
@@ -18,6 +19,7 @@ function ViewContainer() {
                 <Route path='homework' element={<HomeworkView/>}></Route>
                 <Route path='homework/:homeworkId' element={<HomeworkView/>}></Route>
                 <Route path='userDetails' element={<UserDetailsView/>}></Route>
+                <Route path='changePassword' element={<ChangePasswordView/>}></Route>
                 <Route path='*' element={<NotFoundView/>}></Route>
             </Routes>
         </div>

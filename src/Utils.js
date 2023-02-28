@@ -16,6 +16,17 @@ export async function fetchUserDetails() {
         .then(response => response.json())
 }
 
+export function fetchPostChangePassword(changePasswordDto) {
+    const headers = getHeaders();
+    headers.set('Content-Type', 'application/json')
+
+    return fetch(API_PATH + `/changePassword`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(changePasswordDto)
+    })
+}
+
 export function fetchPostNewSwimmer(swimmerDto) {
     const headers = getHeaders();
     headers.set('Content-Type', 'application/json')

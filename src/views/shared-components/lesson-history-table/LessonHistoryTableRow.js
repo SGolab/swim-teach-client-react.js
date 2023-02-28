@@ -33,7 +33,7 @@ function LessonHistoryTableRow({lesson, isFirst}) {
             </div>
 
             {lesson.homeworkId &&
-                <div className={styles.homeworkInfo} onClick={() => navigate(`homework/${lesson.homeworkId}`)}>
+                <div className={styles.homeworkInfo} onClick={() => navigate(`/homework/${lesson.homeworkId}`)}>
                     <img src={'/write.png'}/>
                     {!isMobile && <span>Homework</span>}
                 </div>

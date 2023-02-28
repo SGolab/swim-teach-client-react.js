@@ -56,13 +56,15 @@ function SkillTreePresentation({stages, swimmerName, skillDetailsId}) {
     return (
         <div className={styles.skillTreePresentation}>
 
-            <div className={styles.title}>
-                {swimmerName ? `${swimmerName}'s Skills` : 'Skills'}
-            </div>
-
-            <PathHeader stage={stage} setStage={setStage}
-                        subject={subject} setSubject={setSubject}
-                        skill={skill} setSkill={setSkill}/>
+            {stage ?
+                <PathHeader stage={stage} setStage={setStage}
+                            subject={subject} setSubject={setSubject}
+                            skill={skill} setSkill={setSkill}/>
+                :
+                <div className={styles.title}>
+                    {swimmerName ? `${swimmerName}'s Skills` : 'Skills'}
+                </div>
+            }
             {renderContent()}
         </div>
     )
