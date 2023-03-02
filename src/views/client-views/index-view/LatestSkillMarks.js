@@ -1,6 +1,7 @@
 import styles from "./IndexView.module.css"
 import {getColorForStatus, getImageForStatus} from "../../../Utils";
 import {useNavigate} from "react-router-dom";
+import SkillMarkList from "../../shared-components/lesson-history-table/SkillMarkList";
 
 function LatestSkillMarks({skillMarks}) {
 
@@ -14,15 +15,7 @@ function LatestSkillMarks({skillMarks}) {
                 LATEST SKILL MARKS
             </div>
 
-            <div className={styles.skillMarksList}>
-                {skillMarks?.map(sm =>
-                    <div className={styles.skillMarksListItem}>
-                        <div className={styles.imageContainer} style={{backgroundColor: getColorForStatus(sm.skillStatus)}}>
-                            <img src={getImageForStatus(sm.skillStatus)}/>
-                        </div>
-                        <span>{sm.skillDetailsTitle}</span>
-                    </div>)}
-            </div>
+            {skillMarks && <SkillMarkList skillMarks={skillMarks}/>}
 
         </div>
     )

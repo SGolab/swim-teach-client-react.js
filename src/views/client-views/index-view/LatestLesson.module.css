@@ -1,0 +1,44 @@
+.contentContainer {
+    background-color: var(--tile-background);
+
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: var(--tile-background-hover);
+    box-shadow: var(--light-shadow);
+
+    padding: 10px;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: bold;
+}
+
+.titleContainer img {
+    height: 1.5rem;
+}
+
+.extendArrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.extendArrow img {
+    height: 1.5rem;
+}
+
+.skillMarksListContainer {
+    font-size: .8rem;
+}
+

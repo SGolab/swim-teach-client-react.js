@@ -1,23 +1,31 @@
-import styles from "./IndexView.module.css";
-import {useNavigate} from "react-router-dom";
+import styles from "./LatestLesson.module.css";
+import SkillMarkList from "../../shared-components/lesson-history-table/SkillMarkList";
+import {useState} from "react";
 
 function LatestLesson({lesson}) {
 
-    const navigate = useNavigate();
+    const [isOpened, setIsOpened] = useState(false)
 
     return (
-        <div className={styles.latestLessonContainer}>
+        <div className={styles.contentContainer} onClick={() => setIsOpened(prev => !prev)}>
 
-            <div className={styles.titleContainer} onClick={() => navigate('/lessonHistory')}>
-                <img src={'teach.png'}/>
-                LATEST LESSON
+            <div className={styles.header}>
+
+                <div className={styles.titleContainer}>
+                    <img src={'teach.png'}/>
+                    LATEST LESSON
+                </div>
+
+                <div className={styles.extendArrow}>
+                    <img src={'caret-down.png'}/>
+                </div>
             </div>
 
-
-            <div className={styles.latestLessonInfoContainer}>
-                <span>{lesson?.location}</span>
-                <span>{lesson?.date + ' ' + lesson?.time}</span>
-            </div>
+            {isOpened && lesson &&
+                <div className={styles.skillMarksListContainer}>
+                    <SkillMarkList skillMarks={lesson.skillMarks}/>
+                </div>
+            }
 
         </div>
     )

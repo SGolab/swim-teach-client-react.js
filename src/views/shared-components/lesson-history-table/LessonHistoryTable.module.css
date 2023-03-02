@@ -136,20 +136,14 @@
     text-align: start;
     font-weight: bold;
     color: gray;
-
-    margin-left: 10px;
 }
 
 .skillmarkItem {
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 10px;
 
     box-shadow: var(--light-shadow);
-
-    margin-left: 10px;
-    margin-right: 10px;
 
     text-align: start;
 
@@ -159,9 +153,11 @@
 .skillmarkItem span {
     overflow: hidden;
     text-overflow: ellipsis;
+
+    margin-left: 10px;
 }
 
-.skillmarkStatusLabel {
+.imgContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,9 +167,10 @@
     height: 100%;
 }
 
-.skillmarkStatusLabel img {
+.imgContainer img {
     margin: 5px;
-    height: 40px;
+    /*height: 40px;*/
+    aspect-ratio: 1/1;
 }
 
 .imageContainer {
@@ -254,10 +251,6 @@
         font-size: 3.5vw;
     }
 
-    .skillmarkItem {
-        height: 50px;
-    }
-
     .extendArrow img {
         height: 5vw !important;
     }
@@ -266,7 +259,7 @@
         height: 6vw !important;
     }
 
-    .skillmarkStatusLabel img {
+    .imgContainer img {
         height: 7vw !important;
     }
 

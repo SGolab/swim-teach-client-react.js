@@ -2,7 +2,7 @@ import LessonHistoryTableRow from "./LessonHistoryTableRow";
 import styles from './LessonHistoryTable.module.css'
 import {useState} from "react";
 
-function LessonHistoryTable({swimmerName, lessons}) {
+function LessonHistoryTable({swimmerName, lessons, progressTree}) {
 
     const ranges = initRanges(lessons.length, 5)
 
@@ -37,7 +37,6 @@ function LessonHistoryTable({swimmerName, lessons}) {
                     :
                     'No lessons yet!'
                 }
-
             </div>
 
             {lessons.slice(ranges[rangeIndex].start, ranges[rangeIndex].end).map((lesson) => {

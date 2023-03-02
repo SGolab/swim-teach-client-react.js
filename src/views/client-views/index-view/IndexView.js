@@ -33,8 +33,8 @@ function IndexView() {
 
             <div className={styles.contentContainer}>
                 <LatestLesson lesson={lessonData?.lessons[0]}/>
-                <CurrentHomework homeworkItem={homeworkData?.homeworks[0]}/>
-                <LatestSkillMarks skillMarks={lessonData?.lessons.flatMap(l => l.skillMarks).slice(0, 5)}/>
+                <CurrentHomework homework={homeworkData?.homeworks[0]}/>
+                {/*<LatestSkillMarks skillMarks={lessonData?.lessons.flatMap(l => l.skillMarks).slice(0, 5)}/>*/}
             </div>
         </div>
     )

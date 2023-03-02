@@ -1,18 +1,31 @@
-import {getColorForStatus, getImageForStatus} from "../../../Utils";
+import {getColorForStatus, getImageForStatus, getImageForTitle} from "../../../Utils";
 import styles from './LessonHistoryTable.module.css'
+import {useNavigate} from "react-router-dom";
 
-function SkillMarkItem({skillMark, setSelectedSkill}) {
+function SkillMarkItem({skillMark}) {
+
+    const navigate = useNavigate()
 
     const handleClick = function (e) {
-        setSelectedSkill(skillMark)
+        navigate(`/skillTree/${skillMark.skillDetailsId}`)
         e.stopPropagation()
     }
 
     return (
         <div className={styles.skillmarkItem} onClick={handleClick}>
-            <div className={styles.skillmarkStatusLabel} style={{backgroundColor: getColorForStatus(skillMark.skillStatus)}}>
-                <img src={getImageForStatus(skillMark.skillStatus)} alt="img"/>
+
+            <div className={styles.imgContainer}>
+                <img src={getImageForTitle(skillMark.stageTitle)} alt={''}/>
             </div>
+
+            <div className={styles.imgContainer}>
+                <img src={getImageForTitle(skillMark.subjectTitle)} alt={''}/>
+            </div>
+
+            <div className={styles.imgContainer} style={{backgroundColor: getColorForStatus(skillMark.skillStatus)}}>
+                <img src={getImageForStatus(skillMark.skillStatus)} alt={''}/>
+            </div>
+
             <span>{skillMark.skillDetailsTitle}</span>
         </div>
     )

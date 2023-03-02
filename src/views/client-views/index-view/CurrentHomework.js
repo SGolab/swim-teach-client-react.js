@@ -1,41 +1,55 @@
-import styles from "./IndexView.module.css";
-import {getColorForStatus, getImageForStatus} from "../../../Utils";
-import {useNavigate} from "react-router-dom";
+import styles from './CurrentHomework.module.css'
+import {useState} from "react";
 
-function CurrentHomework({homeworkItem}) {
+function CurrentHomework({homework}) {
 
-    const navigate = useNavigate()
-
-    const handleFullDetails = function () {
-        if (homeworkItem) {
-            navigate(`/homework/${homeworkItem.id}`)
-        }
-    }
+    let [isOpened, setIsOpened] = useState(false);
 
     return (
-        <div className={styles.currentHomeworkContainer}>
+        <div className={styles.contentContainer} onClick={() => setIsOpened(prev => !prev)}>
 
-            <div className={styles.titleContainer} onClick={handleFullDetails}>
-                <img src={'/write.png'}/>
-                CURRENT HOMEWORK
+            <div className={styles.header}>
+
+                <div className={styles.titleContainer}>
+                    <img src={'write.png'}/>
+                    CURRENT HOMEWORK
+                </div>
+
+                <div className={styles.extendArrow}>
+                    <img src={'caret-down.png'}/>
+                </div>
             </div>
 
-            <div className={styles.dateContainer}>{homeworkItem?.date}</div>
+            {isOpened && homework &&
+                <div className={styles.skillsContainer}>
+                    <div className={styles.skillsText}>SKILLS</div>
 
-            <div className={styles.skillsGrid}>
-                {homeworkItem?.skills
-                    .map(skill =>
-                        <div className={styles.skillsGridItem}
-                             style={{backgroundColor: getColorForStatus(skill.status)}}>
-                            <img src={getImageForStatus(skill.status)}/>
-                        </div>
-                    )}
-                {homeworkItem?.customSkills &&
-                    <div className={styles.skillsGridItem}>
-                        <img src='/custom.png'/>
+                    <div className={styles.skillsContainer}>
+                        {homework.skills.map(skill =>
+                            <div
+                                className={styles.skillItem}>{skill.title}
+                            </div>)
+                        }
                     </div>
-                }
-            </div>
+
+
+                    {homework.customSkills.length &&
+                        <>
+                            <div className={styles.skillsText}>CUSTOM SKILLS</div>
+
+                            <div className={styles.customSkillsContainer}>
+                                <div className={styles.imgContainer}>
+                                    <img src={'/custom.png'}/>
+                                </div>
+
+                                {homework.customSkills.map(customSkill => <div
+                                    className={styles.skillItem}>{customSkill}</div>)}
+                            </div>
+                        </>
+                    }
+                </div>
+            }
+
 
         </div>
     )
