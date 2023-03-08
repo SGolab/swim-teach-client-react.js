@@ -1,0 +1,94 @@
+.skillList {
+    display: grid;
+
+    gap: 5px;
+}
+
+.skillsAcquiredText {
+    text-align: start;
+    font-weight: bold;
+    color: gray;
+}
+
+.skillItem {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    box-shadow: var(--light-shadow);
+
+    text-align: start;
+
+    cursor: pointer;
+}
+
+.skillItem span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-left: 10px;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: var(--light-shadow);
+
+    height: 100%;
+}
+
+.imgContainer img {
+    margin: 5px;
+    height: 1.5rem;
+    aspect-ratio: 1/1;
+}
+
+.skillPreview {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.skillPreview .videoContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.videoContainer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.videoContainer > iframe {
+    aspect-ratio: 16/9;
+    width: 75%;
+}
+
+.fullDetailsBtn {
+    background-color: var(--tile-background);
+    box-shadow: var(--light-shadow);
+
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    outline: solid black 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.fullDetailsBtn:hover {
+    background-color: var(--tile-background-hover);
+}

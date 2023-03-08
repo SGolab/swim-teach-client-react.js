@@ -23,24 +23,24 @@ function SkillMarkSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, han
 
     const addSkillMark = function (skill, status) {
 
-        const foundSkillMark = skillMarks.find(sm => sm.skillDetailsId === skill.detailsId)
+        const foundSkillMark = skillMarks.find(sm => sm.detailsId === skill.detailsId)
 
         if (foundSkillMark) {
 
-            if (foundSkillMark.skillStatus === status) { //remove skillMark
+            if (foundSkillMark.status === status) { //remove skillMark
                 removeSkillMark(foundSkillMark)
             } else { //change status of skillMark
-                foundSkillMark.skillStatus = status;
+                foundSkillMark.status = status;
                 setSkillMarks(prev => [...prev]) //force rerender
             }
 
         } else {
 
             const sm = {
-                skillDetailsId: skill.detailsId,
-                skillDetailsTitle: skill.title,
-                skillStatus: status,
-                skillPrevStatus: skill.status
+                detailsId: skill.detailsId,
+                title: skill.title,
+                status: status,
+                prevStatus: skill.status
             }
 
             setSkillMarks(prev => [...prev, sm])
@@ -100,7 +100,7 @@ function SkillMarkSelector({skillTree, uploadedSkillMarks, uploadSkillMarks, han
                                         <div className={styles.imgContainer}
                                              style={{
                                                  boxShadow: (skill.status === status ? boxShadowInset : ''),
-                                                 outline: (skillMarks.find(sm => sm.skillDetailsId === skill.detailsId)?.skillStatus === status && 'solid black 2px'),
+                                                 outline: (skillMarks.find(sm => sm.detailsId === skill.detailsId)?.status === status && 'solid black 2px'),
                                                  backgroundColor: getColorForStatus(status)
                                              }}
                                              onClick={() => {

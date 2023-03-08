@@ -1,9 +1,9 @@
-import SkillMarkList from "./SkillMarkList";
+import SkillList from "../skill-list/SkillList";
 import {useState} from "react";
 import {getWeekday} from "../../../Utils";
 import {useNavigate} from "react-router-dom";
 import useIsMobile from "../../../hooks/useIsMobile";
-import SkillMarkPreview from "./SkillMarkPreview";
+import SkillPreview from "../skill-list/SkillPreview";
 import styles from './LessonHistoryTable.module.css'
 
 function LessonHistoryTableRow({lesson, isFirst}) {
@@ -45,8 +45,10 @@ function LessonHistoryTableRow({lesson, isFirst}) {
 
             {isOpened &&
                 <div className={styles.lessonRowDropdown}>
-                    <SkillMarkList skillMarks={lesson.skillMarks} setSelectedSkill={setSelectedSkill}/>
-                    {selectedSkill && <SkillMarkPreview skill={selectedSkill}/>}
+                    <div className={styles.skillsAcquiredText}>ACQUIRED SKILLS</div>
+
+                    <SkillList skills={lesson.skillMarks} setSelectedSkill={setSelectedSkill}/>
+                    {selectedSkill && <SkillPreview skill={selectedSkill}/>}
                 </div>
             }
 

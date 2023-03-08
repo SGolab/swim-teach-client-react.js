@@ -38,6 +38,15 @@
     height: 1.5rem;
 }
 
+.dropdown {
+    padding-top: 10px;
+}
+
+.skillsAcquiredText {
+    font-weight: bold;
+    color: gray;
+}
+
 .skillMarksListContainer {
     font-size: .8rem;
 }

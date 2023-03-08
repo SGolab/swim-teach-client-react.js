@@ -1,7 +1,7 @@
 import styles from "./IndexView.module.css"
 import {getColorForStatus, getImageForStatus} from "../../../Utils";
 import {useNavigate} from "react-router-dom";
-import SkillMarkList from "../../shared-components/lesson-history-table/SkillMarkList";
+import SkillList from "../../shared-components/skill-list/SkillList";
 
 function LatestSkillMarks({skillMarks}) {
 
@@ -15,7 +15,7 @@ function LatestSkillMarks({skillMarks}) {
                 LATEST SKILL MARKS
             </div>
 
-            {skillMarks && <SkillMarkList skillMarks={skillMarks}/>}
+            {skillMarks && <SkillList skillMarks={skillMarks}/>}
 
         </div>
     )

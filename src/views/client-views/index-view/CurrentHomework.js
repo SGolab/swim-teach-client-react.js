@@ -1,5 +1,6 @@
 import styles from './CurrentHomework.module.css'
 import {useState} from "react";
+import SkillList from "../../shared-components/skill-list/SkillList";
 
 function CurrentHomework({homework}) {
 
@@ -20,17 +21,17 @@ function CurrentHomework({homework}) {
                 </div>
             </div>
 
-            {isOpened && homework &&
-                <div className={styles.skillsContainer}>
-                    <div className={styles.skillsText}>SKILLS</div>
+            {isOpened &&
+                <div className={styles.dropdown}>
+                    {homework &&
+                        <>
+                            <div className={styles.skillsText}>SKILLS</div>
 
-                    <div className={styles.skillsContainer}>
-                        {homework.skills.map(skill =>
-                            <div
-                                className={styles.skillItem}>{skill.title}
-                            </div>)
-                        }
-                    </div>
+                            <div className={styles.skillsContainer}>
+                                <SkillList skills={homework.skills}/>
+                            </div>
+                        </>
+                    }
 
 
                     {homework.customSkills.length &&
@@ -49,8 +50,6 @@ function CurrentHomework({homework}) {
                     }
                 </div>
             }
-
-
         </div>
     )
 }

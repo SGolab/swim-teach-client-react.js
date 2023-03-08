@@ -1,5 +1,5 @@
 import styles from "./LatestLesson.module.css";
-import SkillMarkList from "../../shared-components/lesson-history-table/SkillMarkList";
+import SkillList from "../../shared-components/skill-list/SkillList";
 import {useState} from "react";
 
 function LatestLesson({lesson}) {
@@ -21,9 +21,14 @@ function LatestLesson({lesson}) {
                 </div>
             </div>
 
+
             {isOpened && lesson &&
-                <div className={styles.skillMarksListContainer}>
-                    <SkillMarkList skillMarks={lesson.skillMarks}/>
+                <div className={styles.extension}>
+                    <div className={styles.skillsAcquiredText}>ACQUIRED SKILLS</div>
+
+                    <div className={styles.skillMarksListContainer}>
+                        <SkillList skills={lesson.skillMarks}/>
+                    </div>
                 </div>
             }
 

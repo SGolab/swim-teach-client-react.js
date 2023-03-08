@@ -7,15 +7,15 @@ function SkillMarkList({skillMarks, handleRemoveSkillMark}) {
             {skillMarks.map(sm =>
                 <div className={styles.skillMarkItem}
                      style={{backgroundColor: isWarning(sm) ? 'rgb(238, 210, 2)' : ''}}>
-                    {sm.skillDetailsTitle}
+                    {sm.title}
                     <div className={styles.statusImgContainer}
-                         style={{backgroundColor: getColorForStatus(sm.skillPrevStatus) === 'transparent' ? 'white' : getColorForStatus(sm.skillPrevStatus)}}>
-                        <img src={getImageForStatus(sm.skillPrevStatus)} alt={''}/>
+                         style={{backgroundColor: getColorForStatus(sm.prevStatus) === 'transparent' ? 'white' : getColorForStatus(sm.skillPrevStatus)}}>
+                        <img src={getImageForStatus(sm.prevStatus)} alt={''}/>
                     </div>
                     <img src={'/straight-right-arrow.png'}/>
                     <div className={styles.statusImgContainer}
-                         style={{backgroundColor: getColorForStatus(sm.skillStatus)}}>
-                        <img src={getImageForStatus(sm.skillStatus)} alt={''}/>
+                         style={{backgroundColor: getColorForStatus(sm.status)}}>
+                        <img src={getImageForStatus(sm.status)} alt={''}/>
                     </div>
 
                     {handleRemoveSkillMark && <img src={'/exit.png'} onClick={() => handleRemoveSkillMark(sm)} alt={''}/>}
@@ -30,8 +30,8 @@ export const isWarning = function (skillMark) {
 
     const statuses = Object.keys(StatusEnum)
 
-    return skillMark.skillStatus === StatusEnum.NOT_TRAINED ||
-        statuses.indexOf(skillMark.skillStatus) < statuses.indexOf(skillMark.skillPrevStatus)
+    return skillMark.status === StatusEnum.NOT_TRAINED ||
+        statuses.indexOf(skillMark.status) < statuses.indexOf(skillMark.prevStatus)
 }
 
 export default SkillMarkList;
