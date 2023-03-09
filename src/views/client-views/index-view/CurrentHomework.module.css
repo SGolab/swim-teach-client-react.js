@@ -39,15 +39,17 @@
 }
 
 .dropdown {
-    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.skillsText {
+.tasksText {
+    margin-top: 10px;
     font-weight: bold;
     color: gray;
 }
 
-.skillsContainer {
+.tasksContainer {
     font-size: .8rem;
 }
 
@@ -71,4 +73,24 @@
 
 .skillItem {
     grid-column: 2/2;
+}
+
+.completeToggle {
+    align-self: end;
+    margin-top: 10px;
+
+    width: min-content;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    outline: solid gray 1px;
+    border-radius: 2px;
+    box-shadow: var(--light-shadow);
+}
+
+.completeToggle img {
+    height: 1.5rem;
 }
